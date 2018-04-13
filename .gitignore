@@ -1,0 +1,11 @@
+bin
+build
+data
+obj
+*.zip
+*.cbp
+*.layout
+*.depend
+*.o
+*.a
+*.so
