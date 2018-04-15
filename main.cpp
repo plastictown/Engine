@@ -4,11 +4,16 @@
 #include <GL/freeglut.h>
 #include "engine.h"
 //#include "game-object.h"
+#include "SceneLoader.h"
 #include <vector>
 
 using namespace std;
 int main(int argc, char** argv)
 {
+
+    SceneLoader ldr;
+    ldr.ParseScene("sample_scene.scn");
+
     Engine e(argc, argv);
 
     vector<Image> v1(9), v2(7);

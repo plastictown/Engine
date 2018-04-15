@@ -9,3 +9,5 @@ obj
 *.o
 *.a
 *.so
+CMakeCache.txt
+cmake_install.cmake
