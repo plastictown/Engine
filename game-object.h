@@ -18,7 +18,7 @@ public:
     {
         return pos;
     }
-    virtual ~GameObject(){}
+    virtual ~GameObject() {}
 protected:
     Point2f pos;
 };

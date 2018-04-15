@@ -12,7 +12,12 @@ int main(int argc, char** argv)
 {
 
     SceneLoader ldr;
-    ldr.ParseScene("sample_scene.scn");
+    auto res = ldr.ParseScene("sample_scene.scn");
+    if(!res)
+    {
+      cerr << "can't parse config" << endl;
+      return -1;
+    }
 
     Engine e(argc, argv);
 

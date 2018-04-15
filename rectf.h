@@ -5,11 +5,11 @@
 
 struct Rectf
 {
-    Rectf(): left_top(), right_bottom(){}
+    Rectf(): left_top(), right_bottom() {}
     Rectf(GLfloat x, GLfloat y, GLfloat w, GLfloat h):
-        left_top{x,y}, right_bottom{x+w, y+h}{}
+        left_top {x,y}, right_bottom {x+w, y+h} {}
     Rectf(const Point2f& lt, const Point2f& rb):
-        left_top{lt}, right_bottom{rb}{}
+        left_top {lt}, right_bottom {rb} {}
     Rectf(const Rectf& r);
     Rectf& operator = (const Rectf& r);
     void heightByAspect(GLfloat aspect);

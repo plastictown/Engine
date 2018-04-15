@@ -21,7 +21,10 @@ public:
         stopflag = false;
         _thread.reset(
             new std::thread(
-            [this](){thread_proc();}));
+                [this]()
+        {
+            thread_proc();
+        }));
     }
     bool running() const
     {
@@ -32,15 +35,15 @@ private:
     {
         is_running = true;
         while(!stopflag)
-        {
-            run();
-        }
+            {
+                run();
+            }
         is_running = false;
     }
 private:
-    unique_ptr<std::thread> _thread{nullptr};
-    atomic<bool> stopflag{false};
-    atomic<bool> is_running{false};
+    unique_ptr<std::thread> _thread {nullptr};
+    atomic<bool> stopflag {false};
+    atomic<bool> is_running {false};
 };
 
 #endif // _RUNNABLE_H_INCLUDED_

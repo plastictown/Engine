@@ -22,7 +22,7 @@ class Render
     static Render* instance;
     int window = 0;
     Color4 m_clearColor {1.0f,1.0f,1.0f,0.8f};
-    shared_ptr<Scene> scene{nullptr};
+    shared_ptr<Scene> scene {nullptr};
 
     void init();
     static void draw_func();

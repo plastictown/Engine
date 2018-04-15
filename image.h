@@ -18,17 +18,29 @@ private:
     //---POD type---//
     // deep copy not required
     GLuint m_id = 0;
-    GLfloat aspect{0.0f};
+    GLfloat aspect {0.0f};
     Rectf box;
     // global image id generator
     static Incrementer<GLuint> id_gen;
     static std::set<GLuint> textures;
 public:
-    GLfloat getAspect() const noexcept{return aspect;}
-    GLuint getId() const noexcept{return m_id;}
-    Image(): m_id{id_gen.get_next()}, box{}{}
-    int width() const noexcept {return box.right_bottom.x;}
-    int height() const noexcept{return box.right_bottom.y;}
+    GLfloat getAspect() const noexcept
+    {
+        return aspect;
+    }
+    GLuint getId() const noexcept
+    {
+        return m_id;
+    }
+    Image(): m_id {id_gen.get_next()}, box {} {}
+    int width() const noexcept
+    {
+        return box.right_bottom.x;
+    }
+    int height() const noexcept
+    {
+        return box.right_bottom.y;
+    }
     bool load(const std::string& fname);
     void set() const noexcept;
     const Image& getImage() const;
