@@ -19,6 +19,9 @@ int main(int argc, char** argv)
       return -1;
     }
 
+    cin.get();
+    return 0;
+
     Engine e(argc, argv);
 
     vector<Image> v1(9), v2(7);

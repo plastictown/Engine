@@ -24,6 +24,12 @@ typedef struct ImageDescription
       << "szY = " << sz.y << endl
       << "filename = " << file << endl;
     }
+    void clear()
+    {
+        pos={0.0f,0.0f};
+        sz={0.0f,0.0f};
+        file.clear();
+    }
 } img_desc_t;
 
 typedef struct AnimationDescription
@@ -39,7 +45,15 @@ typedef struct AnimationDescription
       << "posY = " << pos.y << endl
       << "szX = " << sz.x << endl
       << "szY = " << sz.y << endl
+      << "interval = " << interval << endl
       << "nImages = " << files.size() << endl;
+    }
+    void clear()
+    {
+        pos={0.0f,0.0f};
+        sz={0.0f,0.0f};
+        interval = 0u;
+        files.clear();
     }
 } ani_desc_t;
 

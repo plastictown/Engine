@@ -6,6 +6,7 @@ using namespace libconfig;
 
 bool SceneLoader::ParseScene(const std::string& filename)
 {
+    m_cfg.setAutoConvert(true);
   try
     {
       m_cfg.readFile(filename.c_str());
@@ -30,6 +31,7 @@ bool SceneLoader::ParseScene(const std::string& filename)
       const char* pstr=nullptr;
       auto& static_images = root["Scene"]["Images"];
       auto cnt = static_images.getLength();
+      cout << "there are " << cnt << " static images" << endl;
       if(cnt>=1)
         {
           for(int i=0; i<cnt; i++)
@@ -44,16 +46,21 @@ bool SceneLoader::ParseScene(const std::string& filename)
                   desc.file=string(pstr);
                   m_imgdsc.push_back(desc);
                 }
+                else
+                {
+                    cerr << "lookupValue failed!" << endl;
+                    return false;
+                }
+                desc.print();
+                desc.clear();
             }
         }
-        desc.print();
     }
   catch(const SettingNotFoundException &nfex)
     {
       cerr << nfex.what() << endl;
       // static images not found
     }
-
     //---get animations---//
   try
     {
@@ -73,17 +80,23 @@ bool SceneLoader::ParseScene(const std::string& filename)
                   simg.lookupValue("time", desc.interval))
                 {
                   auto& imglist = simg["images"];
-                  auto ctr = simg.getLength();
+                  auto ctr = imglist.getLength();
                   for(int k=0; k<ctr; k++)
                   {
                     pstr = imglist[k];
-                    std::cout << pstr << endl;
+                    desc.files.emplace_back(string(pstr));
                   }
                   m_anidsc.push_back(desc);
                 }
+                else
+                {
+                    cerr << "lookupValue failed!" << endl;
+                    return false;
+                }
+                desc.print();
+                desc.clear();
             }
         }
-        desc.print();
     }
   catch(const SettingNotFoundException &nfex)
     {
