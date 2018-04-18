@@ -1,6 +1,7 @@
+#include "image.h"
 #include "scene.h"
 #include "render.h"
-//#include <iostream>
+#include <memory>
 
 using namespace std;
 
@@ -41,4 +42,41 @@ void Scene::Draw()
 size_t Scene::Count() const
 {
     return objects.size();
+}
+
+bool Scene::FromFile(const std::string& filename)try
+{
+    auto rv = m_loader.ParseScene(filename);
+    if(!rv)
+    {
+        cerr
+        << __FUNCTION__
+        << ": "
+        << "can't load scene from file"
+        << endl;
+        return false;
+    }
+    auto images = m_loader.getImages();
+    auto animations = m_loader.getAnimations();
+
+    for(auto img:images)
+    {
+        std::shared_ptr<GameObject> im = make_shared<Image>();
+        auto pi = std::static_pointer_cast<Image>(im);
+        if(!pi->load(img.file))
+            throw runtime_error(string("can't load image: ") + img.file);
+        pi->setPosition(img.pos);
+        this->AddObject(im);
+    }
+    // TODO: ANIMATIONS
+
+    return true;
+}
+catch(const std::exception& e)
+{
+    cerr
+    << "Scene::FromFile failed: "
+    << e.what()
+    << endl;
+    return false;
 }

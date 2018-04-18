@@ -1,6 +1,7 @@
 #ifndef SCENELOADER_H_INCLUDED
 #define SCENELOADER_H_INCLUDED
 
+#include <iostream>
 #include <string>
 #include <list>
 #include <cstdint>
@@ -61,6 +62,8 @@ class SceneLoader
 {
 public:
     bool ParseScene(const std::string& filename);
+    const std::list<ImageDescription>&     getImages()     const;
+    const std::list<AnimationDescription>& getAnimations() const;
 protected:
 private:
     Config m_cfg;

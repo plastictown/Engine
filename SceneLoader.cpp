@@ -106,3 +106,13 @@ bool SceneLoader::ParseScene(const std::string& filename)
 
   return true;
 }
+
+const std::list<ImageDescription>& SceneLoader::getImages() const
+{
+    return m_imgdsc;
+}
+
+const std::list<AnimationDescription>& SceneLoader::getAnimations() const
+{
+    return m_anidsc;
+}

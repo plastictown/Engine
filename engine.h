@@ -18,7 +18,7 @@ class Engine
 public:
     Engine(int argc, char** argv);
     static void Run();
-    Image LoadImage(const string& filename);
+    static Image LoadImage(const string& filename);
     uint32_t AddObject(Image& img);
     uint32_t AddObject(Animation& a);
     void RemoveObject(uint32_t key);
