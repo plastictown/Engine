@@ -15,12 +15,13 @@ class Engine
     Engine() = delete;
     Engine(const Engine&) = delete;
     Engine& operator = (const Engine&) = delete;
+    Engine(Engine&&) = delete;
+    Engine& operator = (Engine&&) = delete;
 public:
     Engine(int argc, char** argv);
     static void Run();
     static Image LoadImage(const string& filename);
-    uint32_t AddObject(Image& img);
-    uint32_t AddObject(Animation& a);
+    uint32_t AddObject(shared_ptr<GameObject>&& obj);
     void RemoveObject(uint32_t key);
 };
 

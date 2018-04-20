@@ -19,9 +19,6 @@ int main(int argc, char** argv)
       return -1;
     }
 
-    cin.get();
-    return 0;
-
     Engine e(argc, argv);
 
     vector<Image> v1(9), v2(7);
@@ -44,25 +41,28 @@ int main(int argc, char** argv)
     v2[5] = e.LoadImage("./data/cowboy_93.png");
     v2[6] = e.LoadImage("./data/cowboy_94.png");
 
-    Animation a(100);
-    Animation b(80);
-    Animation c{100};
+    shared_ptr<Animation> a =make_shared<Animation>(100);
+    shared_ptr<Animation> b = make_shared<Animation>(80);
+    shared_ptr<Animation> c = make_shared<Animation>(100);
 
-    a.AddImage(v2);
-    c.AddImage(v1);
-    b.AddImage(v2);
+    a->AddImage(v2);
+    c->AddImage(v1);
+    b->AddImage(v2);
 
-    a.setPosition({100,300});
-    b.setPosition({300,300});
-    c.setPosition({300,100});
-
-     v2[0].setPosition({100,100});
+    a->setPosition({100,300});
+    b->setPosition({300,300});
+    c->setPosition({300,100});
 
     e.AddObject(a);
     e.AddObject(b);
     e.AddObject(c);
+
     // static image
-    e.AddObject(v2[0]);
+    shared_ptr<Image> simg = make_shared<Image>();
+    *simg = e.LoadImage("./data/cowboy_87.png");
+    simg->setPosition({100,100});
+
+    e.AddObject(simg);
 
     Engine::Run();
 
