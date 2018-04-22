@@ -1,3 +1,8 @@
+/*
+ * https://github.com/plastictown/Engine
+ * Copyright (C) 2018  Mikhail Domchenkov
+ */
+
 #ifndef _COLOR4_H_
 #define _COLOR4_H_
 #include <GL/gl.h>

@@ -1,3 +1,8 @@
+/*
+ * https://github.com/plastictown/Engine
+ * Copyright (C) 2018  Mikhail Domchenkov
+ */
+
 #include "image.h"
 #include <GL/gl.h>
 #include <iostream>

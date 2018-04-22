@@ -1,3 +1,8 @@
+/*
+ * https://github.com/plastictown/Engine
+ * Copyright (C) 2018  Mikhail Domchenkov
+ */
+
 #ifndef _ENGINE_H_INCLUDED_
 #define _ENGINE_H_INCLUDED_
 

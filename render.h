@@ -1,3 +1,8 @@
+/*
+ * https://github.com/plastictown/Engine
+ * Copyright (C) 2018  Mikhail Domchenkov
+ */
+
 #ifndef RENDER_H_INCLUDED
 #define RENDER_H_INCLUDED
 #include <iostream>
