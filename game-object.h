@@ -14,18 +14,18 @@ class Image;
 class GameObject
 {
 public:
-    virtual const Image& getImage() const = 0;
-    void setPosition(const Point2f& position)
-    {
-        pos = position;
-    }
-    const Point2f& getPosition() const
-    {
-        return pos;
-    }
-    virtual ~GameObject() {}
+  virtual const Image& getImage() const = 0;
+  void setPosition(const Point2f& position)
+  {
+    pos = position;
+  }
+  const Point2f& getPosition() const
+  {
+    return pos;
+  }
+  virtual ~GameObject() {}
 protected:
-    Point2f pos;
+  Point2f pos;
 };
 
 #endif // _GAME_OBJECT_H_INCLUDED_

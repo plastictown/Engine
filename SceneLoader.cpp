@@ -11,7 +11,7 @@ using namespace libconfig;
 
 bool SceneLoader::ParseScene(const std::string& filename)
 {
-    m_cfg.setAutoConvert(true);
+  m_cfg.setAutoConvert(true);
   try
     {
       m_cfg.readFile(filename.c_str());
@@ -51,13 +51,13 @@ bool SceneLoader::ParseScene(const std::string& filename)
                   desc.file=string(pstr);
                   m_imgdsc.push_back(desc);
                 }
-                else
+              else
                 {
-                    cerr << "lookupValue failed!" << endl;
-                    return false;
+                  cerr << "lookupValue failed!" << endl;
+                  return false;
                 }
-                desc.print();
-                desc.clear();
+              desc.print();
+              desc.clear();
             }
         }
     }
@@ -66,7 +66,7 @@ bool SceneLoader::ParseScene(const std::string& filename)
       cerr << nfex.what() << endl;
       // static images not found
     }
-    //---get animations---//
+  //---get animations---//
   try
     {
       AnimationDescription desc;
@@ -87,19 +87,19 @@ bool SceneLoader::ParseScene(const std::string& filename)
                   auto& imglist = simg["images"];
                   auto ctr = imglist.getLength();
                   for(int k=0; k<ctr; k++)
-                  {
-                    pstr = imglist[k];
-                    desc.files.emplace_back(string(pstr));
-                  }
+                    {
+                      pstr = imglist[k];
+                      desc.files.emplace_back(string(pstr));
+                    }
                   m_anidsc.push_back(desc);
                 }
-                else
+              else
                 {
-                    cerr << "lookupValue failed!" << endl;
-                    return false;
+                  cerr << "lookupValue failed!" << endl;
+                  return false;
                 }
-                desc.print();
-                desc.clear();
+              desc.print();
+              desc.clear();
             }
         }
     }
@@ -114,10 +114,10 @@ bool SceneLoader::ParseScene(const std::string& filename)
 
 const std::list<ImageDescription>& SceneLoader::getImages() const
 {
-    return m_imgdsc;
+  return m_imgdsc;
 }
 
 const std::list<AnimationDescription>& SceneLoader::getAnimations() const
 {
-    return m_anidsc;
+  return m_anidsc;
 }
