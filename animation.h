@@ -21,18 +21,37 @@ using namespace std;
  */
 class Animation: public runnable, public GameObject
 {
-    /**< images to draw */
-  vector<Image> images;
-    /**< current image index */
-  Incrementer<GLuint> index;
-    /**< interval between image changing */
-  std::chrono::milliseconds interval;
+  vector<Image> images;               /**< images to draw */
+  Incrementer<GLuint> index;          /**< current image index */
+  std::chrono::milliseconds interval; /**< interval between image changing */
 public:
-  explicit Animation( const decltype(interval)& m);
-  explicit Animation( const uint32_t m);
-  void set_interval(const decltype(interval)& m);
+  /** @brief Construct new Animation object
+   * @param [in] msec - interval between images
+   * in milliseconds of type std::chrono::milliseconds
+   * @remarks Animation ctor also starts animation
+   * thread
+   * @see Animation
+   * @see set_interval
+   */
+  explicit Animation( const decltype(interval)& msec);
+  /** @brief Construct new Animation object
+     * @param [in] msec - interval between images
+     * in milliseconds of type uint32_t
+     * @remarks Animation ctor also starts animation
+     * thread
+     * @see Animation
+     * @see set_interval
+     */
+  explicit Animation( const uint32_t msec);
+  /** @brief Set new intervalbetween images
+     * @param [in] msec - new interval value
+     * in milliseconds of type std::chrono::milliseconds
+     */
+  void set_interval(const decltype(interval)& msec);
   /**
    * @brief Add new Image into Animation
+   * @param [in] img - Image object to be
+   * inserted in Animation.
    * @see Image
    * @see AddImage
    */
@@ -59,16 +78,18 @@ public:
    * @see getCurrentImage
    */
   const Image& getImage() const;
-   /**
-   * @brief Animation thread procedure.
-   * Changes Image id with specified interval
-   * @see runnable
-   * @remarks runnable thread calls this method
-   * in the while cycle.
-   */
+  /**
+  * @brief Animation thread procedure.
+  * Changes Image id with specified interval
+  * @see runnable
+  * @remarks runnable thread calls this method
+  * in the while cycle.
+  */
   void run();
+  /** @brief Destructor. Stops and destroys
+   * thread object and images.
+   */
   ~Animation();
 };
-
 
 #endif // _ANIMATION_H_INCLUDED_

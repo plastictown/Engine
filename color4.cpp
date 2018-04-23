@@ -13,6 +13,7 @@ Color4::Color4()
 
 Color4::Color4(const Color4& other)
 {
+  if(&other == this) return;
   *this = other;
 }
 

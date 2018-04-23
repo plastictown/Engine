@@ -14,18 +14,18 @@
 using namespace std;
 int main(int argc, char** argv)
 {
-    Engine e(argc, argv);
+  Engine e(argc, argv);
 
-    shared_ptr<Scene> scn= make_shared<Scene>();
-    if(!scn->FromFile("sample_scene.scn"))
+  shared_ptr<Scene> scn= make_shared<Scene>();
+  if(!scn->FromFile("sample_scene.scn"))
     {
-        cerr << __FUNCTION__ << ": can't load scene" << endl;
-        return -1;
+      cerr << __FUNCTION__ << ": can't load scene" << endl;
+      return -1;
     }
 
-    e.SetScene(std::move(scn));
+  e.SetScene(std::move(scn));
 
-    Engine::Run();
+  Engine::Run();
 
-    return 0;
+  return 0;
 }

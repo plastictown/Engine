@@ -6,19 +6,19 @@
 #include "animation.h"
 #include <thread>
 
-Animation::Animation( const decltype(interval)& m): interval {m}
+Animation::Animation( const decltype(interval)& msec): interval {msec}
 {
   this->start();
 }
 
-Animation::Animation( const uint32_t m): interval {std::chrono::milliseconds{m}}
+Animation::Animation( const uint32_t msec): interval {std::chrono::milliseconds{msec}}
 {
   this->start();
 }
 
-void Animation::set_interval(const decltype(interval)& m)
+void Animation::set_interval(const decltype(interval)& msec)
 {
-  interval = m;
+  interval = msec;
 }
 
 void Animation::AddImage(const Image& img)
