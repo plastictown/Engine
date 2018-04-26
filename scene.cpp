@@ -40,7 +40,22 @@ void Scene::Draw()
 {
   for(auto& o:objects)
     {
-      Render::DrawImage(o.second->getImage(), o.second->getPosition());
+      switch(o.second->getType())
+        {
+        case GameObjectType::TypeImage:
+        {
+          auto ptr = std::static_pointer_cast<Image>(o.second);
+          Render::DrawImage(ptr->getImage(), ptr->getPosition());
+          break;
+        }
+        case GameObjectType::TypeAnimation:
+        {
+          auto ptr = std::static_pointer_cast<Animation>(o.second);
+          Render::DrawImage(ptr->getImage(), ptr->getPosition());
+          break;
+        }
+
+        }
     }
 }
 
@@ -102,10 +117,10 @@ catch(const std::exception& e)
 
 void Scene::print() const
 {
-    cout
-    << __FUNCTION__
-    << ": there are "
-    << objects.size()
-    << " objects in scene"
-    << endl;
+  cout
+      << __FUNCTION__
+      << ": there are "
+      << objects.size()
+      << " objects in scene"
+      << endl;
 }

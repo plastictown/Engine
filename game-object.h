@@ -11,10 +11,19 @@
 
 class Image;
 
+/** @enum GameObjectType
+ * contain types of all possible
+ * objects in a Scene
+ */
+enum class GameObjectType
+{
+    TypeImage,
+    TypeAnimation
+};
+
 class GameObject
 {
 public:
-  virtual const Image& getImage() const = 0;
   void setPosition(const Point2f& position)
   {
     pos = position;
@@ -23,9 +32,19 @@ public:
   {
     return pos;
   }
+  const GameObjectType& getType() const
+  {
+      return m_type;
+  }
+  void setType(const GameObjectType& type)
+  {
+      m_type = type;
+  }
   virtual ~GameObject() {}
 protected:
   Point2f pos;
+private:
+    GameObjectType m_type;
 };
 
 #endif // _GAME_OBJECT_H_INCLUDED_

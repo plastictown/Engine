@@ -6,13 +6,16 @@
 #include "animation.h"
 #include <thread>
 
-Animation::Animation( const decltype(interval)& msec): interval {msec}
+Animation::Animation( const decltype(interval)& msec)
+: interval {msec}
 {
+  setType(GameObjectType::TypeAnimation);
   this->start();
 }
 
 Animation::Animation( const uint32_t msec): interval {std::chrono::milliseconds{msec}}
 {
+    setType(GameObjectType::TypeAnimation);
   this->start();
 }
 
