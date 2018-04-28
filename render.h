@@ -28,6 +28,7 @@ class Render
   int window = 0;
   Color4 m_clearColor {1.0f,1.0f,1.0f,0.8f};
   shared_ptr<Scene> scene {nullptr};
+  const unsigned char KEY_ESCAPE = 27;
 
   void init();
   static void draw_func();
@@ -37,6 +38,8 @@ class Render
   static void passive_motion_func(int x, int y);
   void Motion(int x, int y);
   static void motion_func(int x, int y);
+  void Keyboard(unsigned char key, int x, int y);
+  static void keyboard_func(unsigned char key, int x, int y);
   void Entry(int state);
   static void entry_func(int state);
   void Mouse(int button, int state, int x, int y);

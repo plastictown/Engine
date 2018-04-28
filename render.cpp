@@ -19,6 +19,22 @@ void Render::entry_func(int state)
   instance->Entry(state);
 }
 
+void Render::Keyboard(unsigned char key, int x, int y)
+{
+  //TODO
+  if(key == KEY_ESCAPE)
+#ifdef FREEGLUT
+    glutLeaveMainLoop();
+#else
+    exit(0);
+#endif//!FREEGLUT
+}
+
+void Render::keyboard_func(unsigned char key, int x, int y)
+{
+  instance->Keyboard(key, x, y);
+}
+
 void Render::Motion(int x, int y)
 {
   //TODO
@@ -79,6 +95,7 @@ void Render::init()
   glutMouseFunc(mouse_func);
   glutMotionFunc(motion_func);
   glutEntryFunc(entry_func);
+  glutKeyboardFunc(keyboard_func);
   setClearColor(Color4 {1.0f,1.0f,1.0f,0.5f});
 }
 
@@ -126,15 +143,14 @@ Render::Render(int argc, char** argv,
   else
     glutCreateWindow("OpenGL window");
 
-
-  init(); // throws runtime_exception
+  init(); // throws std::runtime_error
 
   setupCam(0,0,640,480);
 }
 
 Render::~Render()
 {
-  // disablecallback
+  // disable callback
   glutDisplayFunc(nullptr);
   glutReshapeFunc(nullptr);
   glutIdleFunc(nullptr);
@@ -142,7 +158,7 @@ Render::~Render()
   glutMouseFunc(nullptr);
   glutMotionFunc(nullptr);
   glutEntryFunc(nullptr);
-
+  glutKeyboardFunc(nullptr);
   IMG_Quit();
   Image::cleanup();
 }

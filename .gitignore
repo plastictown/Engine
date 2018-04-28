@@ -17,5 +17,7 @@ Makefile
 engine
 .cproject
 .project
-.settings/
-
+.settings
+.doxyfile
+html
+latex
