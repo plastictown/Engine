@@ -29,6 +29,19 @@ SceneLoader::ParseScene (const std::string& filename)
       return false;
     }
   auto& root = m_cfg.getRoot ();
+  if(!m_cfg.exists("Scene"))
+    {
+      std::cerr
+        << __FUNCTION__
+        << ": Scene block not found"
+        << std::endl;
+      return false;
+    }
+  auto& scene_cfg=root["Scene"];
+  if(scene_cfg.exists("visibility"))
+    {
+      scene_cfg.lookupValue("visibility", m_scndsc.visibility);
+    }
 
   //---get static images---//
   try
@@ -62,6 +75,11 @@ SceneLoader::ParseScene (const std::string& filename)
 			size.lookupValue ("w", desc.sz.x);
 		      if (size.exists ("h"))
 			size.lookupValue ("h", desc.sz.y);
+		    }
+
+		  if (simg.exists ("visibility"))
+		    {
+		      simg.lookupValue("visibility", desc.visibility);
 		    }
 		  // image - required field
 		  simg.lookupValue ("image", pstr);
@@ -116,6 +134,11 @@ SceneLoader::ParseScene (const std::string& filename)
 			size.lookupValue ("h", desc.sz.y);
 		    }
 
+		  if (simg.exists ("visibility"))
+		    {
+		      simg.lookupValue("visibility", desc.visibility);
+		    }
+
 		  // time and images - required fields
 		  simg.lookupValue ("time", desc.interval);
 		  auto& imglist = simg["images"];
@@ -123,7 +146,7 @@ SceneLoader::ParseScene (const std::string& filename)
 		  for (int k = 0; k < ctr; k++)
 		    {
 		      pstr = imglist[k];
-		      desc.files.emplace_back (string (pstr));
+		      desc.files.emplace_back (std::string (pstr));
 		    }
 		  m_anidsc.push_back (desc);
 		}
@@ -141,6 +164,14 @@ SceneLoader::ParseScene (const std::string& filename)
       cerr << nfex.what () << endl;
       // animations not found
     }
+  catch (std::exception& e)
+  {
+    std::cerr
+      << __FUNCTION__
+      << ": "
+      << e.what()
+      << std::endl;
+  }
 
   return true;
 }
@@ -155,4 +186,9 @@ const std::list<AnimationDescription>&
 SceneLoader::getAnimations () const
 {
   return m_anidsc;
+}
+
+const SceneDescription& SceneLoader::getDescription() const
+{
+  return m_scndsc;
 }

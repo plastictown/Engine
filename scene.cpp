@@ -3,19 +3,20 @@
  * Copyright (C) 2018  Mikhail Domchenkov
  */
 
+#include <memory>
 #include "image.h"
 #include "scene.h"
 #include "render.h"
-#include <memory>
+
 
 using namespace std;
 
 Scene::Scene()
-:m_visible {false}
+:m_visibility {false}
 {
 }
 
-uint32_t Scene::AddObject(shared_ptr<GameObject>& obj)
+uint32_t Scene::AddObject(std::shared_ptr<GameObject>& obj)
 {
   uint32_t id = gen_id.get_next();
   objects.insert(std::make_pair(id, obj));
@@ -29,7 +30,7 @@ void Scene::RemoveObject(uint32_t key)
     objects.erase(ptr);
 }
 
-shared_ptr<GameObject> Scene::GetObject(uint32_t key)
+std::shared_ptr<GameObject> Scene::GetObject(uint32_t key)
 {
   auto ptr = objects.find(key);
   if(ptr != objects.cend())
@@ -41,6 +42,8 @@ void Scene::Draw()
 {
   for(auto& o:objects)
     {
+      if(!o.second->isVisible())
+	continue;
       switch(o.second->getType())
         {
         case GameObjectType::TypeImage:
@@ -77,12 +80,15 @@ bool Scene::FromFile(const std::string& filename)try
             << endl;
         return false;
       }
-    auto images = m_loader.getImages();
-    auto animations = m_loader.getAnimations();
+    auto& images = m_loader.getImages();
+    auto& animations = m_loader.getAnimations();
+    auto& description = m_loader.getDescription();
+    this->setVisible(description.visibility);
 
     for(auto& img:images)
       {
         std::shared_ptr<GameObject> im = make_shared<Image>();
+        im->setVisible(img.visibility);
         auto pi = std::static_pointer_cast<Image>(im);
         if(!pi->load(img.file))
           throw runtime_error(string("can't load image: ") + img.file);
@@ -93,6 +99,7 @@ bool Scene::FromFile(const std::string& filename)try
     for (auto& ani:animations)
       {
         std::shared_ptr<GameObject> a = make_shared<Animation>(ani.interval);
+        a->setVisible(ani.visibility);
         auto pa = std::static_pointer_cast<Animation>(a);
         for(auto& f:ani.files)
           {
@@ -128,9 +135,9 @@ void Scene::print() const
 
 void Scene::setVisible(bool state) noexcept
     {
-      m_visible = state;
+  m_visibility = state;
     }
 bool Scene::isVisible() const noexcept
     {
-      return m_visible;
+      return m_visibility;
     }

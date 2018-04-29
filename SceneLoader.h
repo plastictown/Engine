@@ -21,6 +21,7 @@ typedef struct ImageDescription
   Point2f     pos;
   Point2f     sz;
   std::string file;
+  bool visibility;
   void print() const
   {
     std::cout
@@ -35,6 +36,7 @@ typedef struct ImageDescription
     pos= {0.0f,0.0f};
     sz= {0.0f,0.0f};
     file.clear();
+    visibility = false;
   }
 } img_desc_t;
 
@@ -44,6 +46,7 @@ typedef struct AnimationDescription
   Point2f  sz;
   uint32_t interval;
   std::list<std::string> files;
+  bool visibility;
   void print() const
   {
     std::cout
@@ -60,8 +63,22 @@ typedef struct AnimationDescription
     sz= {0.0f,0.0f};
     interval = 0u;
     files.clear();
+    visibility = false;
   }
 } ani_desc_t;
+
+typedef struct SceneDescription
+{
+  std::string name;
+  Point2f pos;
+  bool visibility;
+  void clear()
+  {
+    name.clear();
+    pos={0.0f,0.0f};
+    visibility=false;
+  }
+}scn_desc_t;
 
 class SceneLoader
 {
@@ -69,9 +86,11 @@ public:
   bool ParseScene(const std::string& filename);
   const std::list<ImageDescription>&     getImages()     const;
   const std::list<AnimationDescription>& getAnimations() const;
+  const SceneDescription& getDescription() const;
 protected:
 private:
-  Config m_cfg;
+  Config                          m_cfg;
+  SceneDescription                m_scndsc;
   std::list<ImageDescription>     m_imgdsc;
   std::list<AnimationDescription> m_anidsc;
 };

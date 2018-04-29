@@ -3,6 +3,8 @@
 Scene: 
 {
   name="sample_scene";
+  visibility=true;
+  
   Images:
   {
     @include "./data/scenes/Images.scn"

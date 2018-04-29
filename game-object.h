@@ -17,6 +17,7 @@ class Image;
  */
 enum class GameObjectType
 {
+    TypeUnknown,
     TypeImage,
     TypeAnimation
 };
@@ -27,6 +28,10 @@ enum class GameObjectType
 class GameObject
 {
 public:
+  GameObject()
+  :m_type{GameObjectType::TypeUnknown},
+   m_visibility{false}
+  {}
   /**
    * @brief Set new position of the scene
    * @param [in] position - scene position relative
@@ -68,11 +73,21 @@ public:
   {
       m_type = type;
   }
+  void setVisible(bool state) noexcept
+      {
+        m_visibility = state;
+      }
+  bool isVisible() const noexcept
+      {
+        return m_visibility;
+      }
   virtual ~GameObject() {}
 protected:
   Point2f pos;
 private:
     GameObjectType m_type;
+    /// Object visibility
+    bool m_visibility;
 };
 
 #endif // _GAME_OBJECT_H_INCLUDED_

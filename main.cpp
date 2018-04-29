@@ -26,7 +26,7 @@ int main(int argc, char** argv) try
       cerr << __FUNCTION__ << ": can't load scene" << endl;
       return -1;
     }
-  scn->setVisible(true);
+  //scn->setVisible(true);
 
   e.SetScene(std::move(scn));
 

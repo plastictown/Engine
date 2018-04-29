@@ -16,10 +16,12 @@ class runnable
 {
 public:
   virtual void run() = 0;
+  virtual ~runnable(){stop();}
   void stop()
   {
     stopflag = true;
     _thread->join();
+    is_running = false;
   }
   void start()
   {
@@ -30,6 +32,7 @@ public:
     {
       thread_proc();
     }));
+    is_running = true;
   }
   bool running() const
   {

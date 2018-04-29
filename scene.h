@@ -27,7 +27,7 @@ class Scene
   /// scene file reader
   SceneLoader m_loader;
   /// scene visibility
-  bool m_visible;
+  bool m_visibility;
 public:
   /**
    * @brief Default constructor

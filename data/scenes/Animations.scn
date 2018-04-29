@@ -13,18 +13,19 @@ animation1:
           h = 0.0;
         }
         time=100;
+        visibility=true;
         images=
-       (
-       "./data/images/cowboy_01.png",
-       "./data/images/cowboy_02.png",
-       "./data/images/cowboy_03.png",
-       "./data/images/cowboy_04.png",
-       "./data/images/cowboy_05.png",
-       "./data/images/cowboy_06.png",
-       "./data/images/cowboy_07.png",
-       "./data/images/cowboy_08.png",
-       "./data/images/cowboy_09.png"
-       );
+        (
+        "./data/images/cowboy_01.png",
+        "./data/images/cowboy_02.png",
+        "./data/images/cowboy_03.png",
+        "./data/images/cowboy_04.png",
+        "./data/images/cowboy_05.png",
+        "./data/images/cowboy_06.png",
+        "./data/images/cowboy_07.png",
+        "./data/images/cowboy_08.png",
+        "./data/images/cowboy_09.png"
+        );
        }
 animation2:
       {
@@ -39,15 +40,16 @@ animation2:
           h = 0.0;
         }
         time=80;
+        visibility=false;
         images=
-       (
-       "./data/images/cowboy_87.png",
-       "./data/images/cowboy_88.png",
-       "./data/images/cowboy_89.png",
-       "./data/images/cowboy_90.png",
-       "./data/images/cowboy_91.png",
-       "./data/images/cowboy_92.png",
-       "./data/images/cowboy_93.png",
-       "./data/images/cowboy_94.png"
-       );
+        (
+        "./data/images/cowboy_87.png",
+        "./data/images/cowboy_88.png",
+        "./data/images/cowboy_89.png",
+        "./data/images/cowboy_90.png",
+        "./data/images/cowboy_91.png",
+        "./data/images/cowboy_92.png",
+        "./data/images/cowboy_93.png",
+        "./data/images/cowboy_94.png"
+        );
        }
