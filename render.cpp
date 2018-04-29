@@ -175,7 +175,8 @@ void Render::draw()
 
   if(scene != nullptr)
     {
-      scene->Draw();
+      if(scene->isVisible())
+	scene->Draw();
     }
 
   glFlush();

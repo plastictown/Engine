@@ -11,6 +11,7 @@
 using namespace std;
 
 Scene::Scene()
+:m_visible {false}
 {
 }
 
@@ -124,3 +125,12 @@ void Scene::print() const
       << " objects in scene"
       << endl;
 }
+
+void Scene::setVisible(bool state) noexcept
+    {
+      m_visible = state;
+    }
+bool Scene::isVisible() const noexcept
+    {
+      return m_visible;
+    }

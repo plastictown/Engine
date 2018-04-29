@@ -7,6 +7,7 @@
 #include <vector>
 #include <memory>
 #include <utility>
+#include <exception>
 #include <GL/gl.h>
 #include <GL/glu.h>
 #include <GL/freeglut.h>
@@ -15,7 +16,7 @@
 
 
 using namespace std;
-int main(int argc, char** argv)
+int main(int argc, char** argv) try
 {
   Engine e(argc, argv);
 
@@ -25,10 +26,20 @@ int main(int argc, char** argv)
       cerr << __FUNCTION__ << ": can't load scene" << endl;
       return -1;
     }
+  scn->setVisible(true);
 
   e.SetScene(std::move(scn));
 
   Engine::Run();
 
   return 0;
+}
+catch(std::exception& e)
+{
+    std::cerr << __FUNCTION__ << ": " << e.what() << std::endl;
+    return -1;
+}
+catch(...)
+{
+    std::cerr << __FUNCTION__ << ": unknown exception" << std::endl;
 }
