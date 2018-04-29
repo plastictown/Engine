@@ -1,0 +1,14 @@
+#sample_scene
+
+Scene: 
+{
+  name="sample_scene";
+  Images:
+  {
+    @include "./data/scenes/Images.scn"
+  }
+  Animations:
+  {
+    @include "./data/scenes/Animations.scn"
+  }
+}

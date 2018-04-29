@@ -7,3 +7,4 @@ add_executable(engine main.cpp point2f.cpp color4.cpp rectf.cpp image.cpp render
 install(TARGETS engine RUNTIME DESTINATION bin)
 set_property(TARGET engine PROPERTY CXX_STANDARD 14)
 target_link_libraries(engine PUBLIC pthread glut GL GLU SDL SDL_image config++)
+target_compile_options(engine PUBLIC -Wall -Weffc++)

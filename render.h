@@ -22,6 +22,10 @@
 using namespace std;
 
 // must be a singleton
+/** @class Render
+ * @brief The class is responsible for
+ * drawing the object and event management
+ */
 class Render
 {
   static Render* instance;
@@ -46,6 +50,9 @@ class Render
   static void mouse_func(int button, int state, int x, int y);
   void setupCam(GLint x, GLint y, GLint w, GLint h);
   void reshape(int w, int h);
+  /**
+   * @brief Draw all
+   */
   void draw();
   void Idle();
 

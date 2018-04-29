@@ -1,0 +1,53 @@
+#Animations
+
+animation1:
+      {
+        position:
+        {
+          x = 100.0;
+          y = 300.0;
+        }
+        size:
+        {
+          w = 0.0;
+          h = 0.0;
+        }
+        time=100;
+        images=
+       (
+       "./data/images/cowboy_01.png",
+       "./data/images/cowboy_02.png",
+       "./data/images/cowboy_03.png",
+       "./data/images/cowboy_04.png",
+       "./data/images/cowboy_05.png",
+       "./data/images/cowboy_06.png",
+       "./data/images/cowboy_07.png",
+       "./data/images/cowboy_08.png",
+       "./data/images/cowboy_09.png"
+       );
+       }
+animation2:
+      {
+        position:
+        {
+          x = 300.0;
+          y = 300.0;
+        }
+        size:
+        {
+          w = 0.0;
+          h = 0.0;
+        }
+        time=80;
+        images=
+       (
+       "./data/images/cowboy_87.png",
+       "./data/images/cowboy_88.png",
+       "./data/images/cowboy_89.png",
+       "./data/images/cowboy_90.png",
+       "./data/images/cowboy_91.png",
+       "./data/images/cowboy_92.png",
+       "./data/images/cowboy_93.png",
+       "./data/images/cowboy_94.png"
+       );
+       }

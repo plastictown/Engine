@@ -1,0 +1,32 @@
+#Images
+
+image1: 
+      {
+        position:
+        {
+          x = 100.0;
+          y = 100.0;
+        }
+        
+        size:
+        {
+          w = 0.0;
+          h = 0.0;
+        }
+	image="./data/images/cowboy_87.png";
+      }
+      
+image2: 
+      {
+        position:
+        {
+          x = 300.0;
+          y = 100.0;
+        }
+        size:
+        {
+          w = 0.0;
+          h = 0.0;
+        }
+	image="./data/images/cowboy_01.png";
+      }

@@ -21,7 +21,7 @@ int main(int argc, char** argv) try
   Engine e(argc, argv);
 
   std::shared_ptr<Scene> scn = std::make_shared<Scene>();
-  if(!scn->FromFile("sample_scene.scn"))
+  if(!scn->FromFile("data/scenes/sample_scene.scn"))
     {
       cerr << __FUNCTION__ << ": can't load scene" << endl;
       return -1;

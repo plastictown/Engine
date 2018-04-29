@@ -1,6 +1,6 @@
 bin
 build
-data
+data/images
 obj
 doxygen
 *.zip
@@ -21,3 +21,4 @@ engine
 .doxyfile
 html
 latex
+Engine.doxyfile

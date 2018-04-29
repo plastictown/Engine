@@ -21,18 +21,53 @@ using namespace std;
 
 class Scene
 {
+  /// id generator for Scene objects
   Incrementer<uint32_t> gen_id;
   std::map<uint32_t, std::shared_ptr<GameObject>> objects;
+  /// scene file reader
   SceneLoader m_loader;
-  bool m_visible; //scene visiblity
+  /// scene visibility
+  bool m_visible;
 public:
+  /**
+   * @brief Default constructor
+   */
   Scene();
-  // returns new object id
+  /**
+   * @brief Add new GameObject into Scene
+   * @param[in] obj - pointer to the object
+   * @return new object id
+   * @see RemoveObject
+   * @see Count
+   */
   uint32_t AddObject(std::shared_ptr<GameObject>& obj);
+  /**
+   * @brief Removes GameObject from the Scene
+   * @param[in] key - object id
+   * @see AddObject
+   * @see Count
+   */
   void RemoveObject(uint32_t key);
+  /**
+   * @brief Returns GameObject by the key
+   * @param[in] key - object id
+   * @return pointer to the object or
+   * nullptr if no such object in the scene
+   */
   std::shared_ptr<GameObject> GetObject(uint32_t key);
+  /**
+   * @brief Draw current scene
+   */
   void Draw();
+  /**
+   * @brief Returns the number of objects in the scene
+   * @return a value of type size_t:
+   * the number of objects in the scene
+   * @see AddObject
+   * @see RemoveObject
+   */
   size_t Count() const;
+
   bool FromFile(const std::string& filename);
   void print() const;
   void setVisible(bool state) noexcept;

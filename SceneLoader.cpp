@@ -9,115 +9,150 @@
 using namespace std;
 using namespace libconfig;
 
-bool SceneLoader::ParseScene(const std::string& filename)
+bool
+SceneLoader::ParseScene (const std::string& filename)
 {
-  m_cfg.setAutoConvert(true);
+  m_cfg.setAutoConvert (true);
   try
     {
-      m_cfg.readFile(filename.c_str());
+      m_cfg.readFile (filename.c_str ());
     }
-  catch(const FileIOException &fioex)
+  catch (const FileIOException &fioex)
     {
-      cerr << fioex.what() << endl;
+      cerr << fioex.what () << endl;
       return false;
     }
-  catch(const ParseException &pex)
+  catch (const ParseException &pex)
     {
-      cerr << "Parse error at " << pex.getFile() << ":" << pex.getLine()
-           << " - " << pex.getError() << std::endl;
+      cerr << "Parse error at " << pex.getFile () << ":" << pex.getLine ()
+	  << " - " << pex.getError () << std::endl;
       return false;
     }
-  auto& root = m_cfg.getRoot();
+  auto& root = m_cfg.getRoot ();
 
   //---get static images---//
   try
     {
       ImageDescription desc;
-      const char* pstr=nullptr;
+      const char* pstr = nullptr;
       auto& static_images = root["Scene"]["Images"];
-      auto cnt = static_images.getLength();
+      auto cnt = static_images.getLength ();
       cout << "there are " << cnt << " static images" << endl;
-      if(cnt>=1)
-        {
-          for(int i=0; i<cnt; i++)
-            {
-              auto& simg=static_images[i];
-              if(simg.lookupValue("posX",desc.pos.x) &&
-                  simg.lookupValue("posY",desc.pos.y) &&
-                  simg.lookupValue("szW",desc.sz.x) &&
-                  simg.lookupValue("szH",desc.sz.y) &&
-                  simg.lookupValue("image",pstr))
-                {
-                  desc.file=string(pstr);
-                  m_imgdsc.push_back(desc);
-                }
-              else
-                {
-                  cerr << "lookupValue failed!" << endl;
-                  return false;
-                }
-              desc.print();
-              desc.clear();
-            }
-        }
+      if (cnt >= 1)
+	{
+	  for (int i = 0; i < cnt; i++)
+	    {
+	      desc.clear ();
+	      auto& simg = static_images[i];
+	      try
+		{
+		  if (simg.exists ("position"))
+		    {
+		      auto& pos = simg["position"];
+		      if (pos.exists ("x"))
+			pos.lookupValue ("x", desc.pos.x);
+		      if (pos.exists ("y"))
+			pos.lookupValue ("y", desc.pos.y);
+		    }
+
+		  if (simg.exists ("size"))
+		    {
+		      auto& size = simg["size"];
+		      if (size.exists ("w"))
+			size.lookupValue ("w", desc.sz.x);
+		      if (size.exists ("h"))
+			size.lookupValue ("h", desc.sz.y);
+		    }
+		  // image - required field
+		  simg.lookupValue ("image", pstr);
+		  desc.file = string (pstr);
+		  m_imgdsc.push_back (desc);
+		}
+	      catch (...)
+		{
+		  cerr << "static images: lookupValue failed!" << endl;
+		  return false;
+		}
+	      desc.print ();
+	    }
+	}
     }
-  catch(const SettingNotFoundException &nfex)
+  catch (const SettingNotFoundException &nfex)
     {
-      cerr << nfex.what() << endl;
+      cerr << nfex.what () << endl;
       // static images not found
     }
   //---get animations---//
   try
     {
       AnimationDescription desc;
-      const char* pstr=nullptr;
+      const char* pstr = nullptr;
       auto& ani_images = root["Scene"]["Animations"];
-      auto cnt = ani_images.getLength();
-      if(cnt>=1)
-        {
-          for(int i=0; i<cnt; i++)
-            {
-              auto& simg=ani_images[i];
-              if(simg.lookupValue("posX",desc.pos.x) &&
-                  simg.lookupValue("posY",desc.pos.y) &&
-                  simg.lookupValue("szW",desc.sz.x) &&
-                  simg.lookupValue("szH",desc.sz.y) &&
-                  simg.lookupValue("time", desc.interval))
-                {
-                  auto& imglist = simg["images"];
-                  auto ctr = imglist.getLength();
-                  for(int k=0; k<ctr; k++)
-                    {
-                      pstr = imglist[k];
-                      desc.files.emplace_back(string(pstr));
-                    }
-                  m_anidsc.push_back(desc);
-                }
-              else
-                {
-                  cerr << "lookupValue failed!" << endl;
-                  return false;
-                }
-              desc.print();
-              desc.clear();
-            }
-        }
+      auto cnt = ani_images.getLength ();
+      if (cnt >= 1)
+	{
+	  for (int i = 0; i < cnt; i++)
+	    {
+	      desc.clear ();
+	      auto& simg = ani_images[i];
+
+	      try
+		{
+		  if (simg.exists ("position"))
+		    {
+		      auto& pos = simg["position"];
+		      if (pos.exists ("x"))
+			pos.lookupValue ("x", desc.pos.x);
+		      if (pos.exists ("y"))
+			pos.lookupValue ("y", desc.pos.y);
+		    }
+
+		  if (simg.exists ("size"))
+		    {
+		      auto& size = simg["size"];
+		      if (size.exists ("w"))
+			size.lookupValue ("w", desc.sz.x);
+		      if (size.exists ("h"))
+			size.lookupValue ("h", desc.sz.y);
+		    }
+
+		  // time and images - required fields
+		  simg.lookupValue ("time", desc.interval);
+		  auto& imglist = simg["images"];
+		  auto ctr = imglist.getLength ();
+		  for (int k = 0; k < ctr; k++)
+		    {
+		      pstr = imglist[k];
+		      desc.files.emplace_back (string (pstr));
+		    }
+		  m_anidsc.push_back (desc);
+		}
+	      catch (...)
+		{
+		  cerr << "animations: lookupValue failed!" << endl;
+		  return false;
+		}
+	      desc.print ();
+	    }
+	}
     }
-  catch(const SettingNotFoundException &nfex)
+  catch (const SettingNotFoundException &nfex)
     {
-      cerr << nfex.what() << endl;
+      cerr << nfex.what () << endl;
       // animations not found
     }
 
   return true;
 }
 
-const std::list<ImageDescription>& SceneLoader::getImages() const
+const std::list<ImageDescription>&
+SceneLoader::getImages () const
 {
   return m_imgdsc;
 }
 
-const std::list<AnimationDescription>& SceneLoader::getAnimations() const
+const std::list<AnimationDescription>&
+SceneLoader::getAnimations () const
 {
   return m_anidsc;
 }
