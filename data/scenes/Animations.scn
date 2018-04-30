@@ -40,7 +40,7 @@ animation2:
           h = 0.0;
         }
         time=80;
-        visibility=false;
+        visibility=true;
         images=
         (
         "./data/images/cowboy_87.png",
