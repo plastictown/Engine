@@ -13,6 +13,7 @@
 #include <GL/freeglut.h>
 #include "engine.h"
 #include "SceneLoader.h"
+#include "polygon.h"
 
 using namespace std;
 int main(int argc, char** argv) try
@@ -25,7 +26,6 @@ int main(int argc, char** argv) try
       cerr << __FUNCTION__ << ": can't load scene" << endl;
       return -1;
     }
-  //scn->setVisible(true);
 
   e.SetScene(std::move(scn));
 

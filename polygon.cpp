@@ -134,3 +134,15 @@ catch (...)
 {
   //stub
 }
+void Polygon::fromRect(const Rectf& rect)try
+{
+  m_vertices.resize(4);
+  m_vertices[0] = {rect.left_top.x, rect.right_bottom.y};
+  m_vertices[1] = rect.left_top;
+  m_vertices[2] = {rect.right_bottom.x, rect.left_top.y};
+  m_vertices[3] = rect.right_bottom;
+}
+catch(...)
+{
+  //stub
+}

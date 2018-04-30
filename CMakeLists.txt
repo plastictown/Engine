@@ -17,4 +17,4 @@ add_executable(engine main.cpp
 install(TARGETS engine RUNTIME DESTINATION bin)
 set_property(TARGET engine PROPERTY CXX_STANDARD 14)
 target_link_libraries(engine PUBLIC pthread glut GL GLU SDL SDL_image config++)
-target_compile_options(engine PUBLIC -Wall -Weffc++)
+target_compile_options(engine PUBLIC -Wall -Weffc++ -g)

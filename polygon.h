@@ -10,6 +10,7 @@
 
 #include <vector>
 #include "point2f.h"
+#include "rectf.h"
 
 class Polygon
 {
@@ -26,6 +27,7 @@ public:
   bool pointInPolygon(const Point2f&&)const;
   void addPoint(const Point2f&);
   void addPoint(const Point2f&&);
+  void fromRect(const Rectf&);
 
 private:
   std::vector<Point2f> m_vertices;
