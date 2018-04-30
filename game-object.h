@@ -29,7 +29,8 @@ class GameObject
 {
 public:
   GameObject()
-  :m_type{GameObjectType::TypeUnknown},
+  :m_pos{},
+   m_type{GameObjectType::TypeUnknown},
    m_visibility{false}
   {}
   /**
@@ -40,7 +41,7 @@ public:
    */
   void setPosition(const Point2f& position)
   {
-    pos = position;
+    m_pos = position;
   }
   /**
    * @brief Get current position of the scene
@@ -50,7 +51,7 @@ public:
    */
   const Point2f& getPosition() const
   {
-    return pos;
+    return m_pos;
   }
   /**
    * Get object type
@@ -83,7 +84,7 @@ public:
       }
   virtual ~GameObject() {}
 protected:
-  Point2f pos;
+  Point2f m_pos;
 private:
     GameObjectType m_type;
     /// Object visibility

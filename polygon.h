@@ -11,22 +11,25 @@
 #include <vector>
 #include "point2f.h"
 
-int pnpoly(int nvert, float *vertx, float *verty, float testx, float testy)
-{
-  int i, j, c = 0;
-  for (i = 0, j = nvert-1; i < nvert; j = i++) {
-    if ( ((verty[i]>testy) != (verty[j]>testy)) &&
-	 (testx < (vertx[j]-vertx[i]) * (testy-verty[i]) / (verty[j]-verty[i]) + vertx[i]) )
-       c = !c;
-  }
-  return c;
-}
-
 class Polygon
 {
 public:
+  Polygon();
+  Polygon(const Polygon&);
+  Polygon(Polygon &&);
+  Polygon& operator=(const Polygon&);
+  Polygon& operator=(const Polygon&&);
+  virtual ~Polygon();
+  bool empty() const noexcept;
+  bool valid() const noexcept;
+  bool pointInPolygon(const Point2f&) const;
+  bool pointInPolygon(const Point2f&&)const;
+  void addPoint(const Point2f&);
+  void addPoint(const Point2f&&);
+
 private:
-  std::vector<Point2f> m_pts;
+  std::vector<Point2f> m_vertices;
 };
 
 #endif /* _POLYGON_H_ */
+
