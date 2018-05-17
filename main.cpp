@@ -21,16 +21,12 @@ int main(int argc, char** argv) try
   Engine e(argc, argv);
 
   std::shared_ptr<Scene> scn = std::make_shared<Scene>();
-  if(!scn->FromFile("data/scenes/sample_scene.scn"))
-    {
-      cerr << __FUNCTION__ << ": can't load scene" << endl;
-      return -1;
-    }
-
+  scn->setVisible(true);
   e.SetScene(std::move(scn));
 
   Engine::Run();
 
+  cin.get();
   return 0;
 }
 catch(std::exception& e)

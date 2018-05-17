@@ -40,6 +40,7 @@ std::shared_ptr<GameObject> Scene::GetObject(uint32_t key)
 
 void Scene::Draw()
 {
+  /*
   for(auto& o:objects)
     {
       if(!o.second->isVisible())
@@ -61,6 +62,13 @@ void Scene::Draw()
 
         }
     }
+    */
+
+    glBegin(GL_POINTS);
+      glColor4f(0.0f,0.0f,0.0f,1.0f);
+      glVertex2f(100.0f,100.0f);
+    glEnd();
+
 }
 
 size_t Scene::Count() const
