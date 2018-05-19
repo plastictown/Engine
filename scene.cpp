@@ -7,7 +7,7 @@
 #include "image.h"
 #include "scene.h"
 #include "render.h"
-
+#include "point-object.h"
 
 using namespace std;
 
@@ -64,11 +64,15 @@ void Scene::Draw()
     }
     */
 
+/*
     glBegin(GL_POINTS);
       glColor4f(0.0f,0.0f,0.0f,1.0f);
       glVertex2f(100.0f,100.0f);
     glEnd();
+*/
 
+  PointObject po(Point2f{100,100}, Color4{1,0,0,1});
+  po.draw();
 }
 
 size_t Scene::Count() const

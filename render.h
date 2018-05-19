@@ -13,11 +13,14 @@
 #include <exception>
 #include <stdexcept>
 #include <memory>
+#include <map>
 #include "image.h"
 #include "color4.h"
 #include "point2f.h"
+#include "point-object.h"
 #include "rectf.h"
 #include "scene.h"
+#include "drawable.h"
 
 using namespace std;
 
@@ -32,6 +35,7 @@ class Render
   int window = 0;
   Color4 m_clearColor {1.0f,1.0f,1.0f,0.8f};
   shared_ptr<Scene> scene {nullptr};
+  std::map<std::string, std::function<void( const Drawable*)>> callbacks;
   const unsigned char KEY_ESCAPE = 27;
 
   void init();
@@ -50,6 +54,10 @@ class Render
   static void mouse_func(int button, int state, int x, int y);
   void setupCam(GLint x, GLint y, GLint w, GLint h);
   void reshape(int w, int h);
+
+  void draw_object( const Drawable& o );
+  void draw_point2( const Drawable* po);
+  static void drawPoint2( const Drawable* po);
   /**
    * @brief Draw all
    */
@@ -59,6 +67,7 @@ class Render
 public:
   void SetScene(shared_ptr<Scene>&);
   static void DrawImage(const Image& im, const Point2f& pos);
+  static void DrawObject( const Drawable& o);
   static void run();
   Image LoadImage(const string& filename);
   Render(int argc, char** argv,

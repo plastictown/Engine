@@ -9,7 +9,7 @@
 #include "drawable.h"
 #include "color4.h"
 
-struct Point2f: public Drawable
+struct Point2f
 {
 public:
   Point2f() {}
@@ -17,15 +17,10 @@ public:
   Point2f(const Point2f& other);
   Point2f(GLfloat _x, GLfloat _y):
     x(_x), y(_y) {}
-  Point2f(GLfloat _x, GLfloat _y, const Color4& _color):
-    x(_x), y(_y), color(_color) {}
   Point2f& operator=(const Point2f& other);
 
   GLfloat x = 0.0f;
   GLfloat y = 0.0f;
-  Color4  color;
-
-  void draw();
 };
 
 #endif // _POINT2F_H_

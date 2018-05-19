@@ -12,9 +12,10 @@ add_executable(engine main.cpp
 					  animation.cpp 
 					  engine.cpp 
 					  SceneLoader.cpp
-					  polygon.cpp)
+					  polygon.cpp
+					  point-object.cpp)
 
 install(TARGETS engine RUNTIME DESTINATION bin)
 set_property(TARGET engine PROPERTY CXX_STANDARD 14)
 target_link_libraries(engine PUBLIC pthread glut GL GLU SDL SDL_image config++)
-target_compile_options(engine PUBLIC -Wall -Weffc++ -g)
+target_compile_options(engine PUBLIC -Wall -g)

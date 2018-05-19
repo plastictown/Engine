@@ -17,11 +17,5 @@ Point2f& Point2f::operator=(const Point2f& rhs)
   if (this == &rhs) return *this;
   x = rhs.x;
   y = rhs.y;
-  color = rhs.color;
   return *this;
-}
-
-void Point2f::draw()
-{
-  // TODO
 }

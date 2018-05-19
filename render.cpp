@@ -9,6 +9,41 @@
 
 Render* Render::instance = nullptr;
 
+void Render::draw_object(const Drawable& o)
+{
+  auto res = callbacks.find(o.getType());
+  if(res != callbacks.cend())
+    callbacks[o.getType()](&o);
+}
+
+void Render::DrawObject( const Drawable& o)
+{
+  instance->draw_object(o);
+}
+
+void Render::draw_point2( const Drawable* po)
+{
+  auto p = dynamic_cast<const PointObject*>(po);
+
+  glBegin(GL_POINTS);
+      glColor4f(p->getColor().r
+               ,p->getColor().g
+               ,p->getColor().b
+               ,p->getColor().a
+               );
+
+      glVertex2f(p->getPoint().x
+                ,p->getPoint().y
+                );
+  glEnd();
+
+}
+
+void Render::drawPoint2( const Drawable* po)
+{
+  instance->draw_point2( po);
+}
+
 void Render::Entry(int state)
 {
   //TODO
@@ -97,6 +132,9 @@ void Render::init()
   glutEntryFunc(entry_func);
   glutKeyboardFunc(keyboard_func);
   setClearColor(Color4 {1.0f,1.0f,1.0f,0.5f});
+
+  //auto f = std::function<void(const Drawable* )>(Render::drawPoint2);
+  callbacks.insert(make_pair(string("point2f"), Render::drawPoint2));
 }
 
 void Render::draw_func()
