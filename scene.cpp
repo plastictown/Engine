@@ -4,6 +4,7 @@
  */
 
 #include <memory>
+#include <cmath>
 #include "image.h"
 #include "scene.h"
 #include "render.h"
@@ -71,8 +72,14 @@ void Scene::Draw()
     glEnd();
 */
 
-  PointObject po(Point2f{100,100}, Color4{1,0,0,1});
-  po.draw();
+  glPointSize(4.0f);
+  static float delta_x = 0;	
+  for(float i= 0.0f;i<640;i+=1.0f){
+ 	PointObject po(Point2f{i, 240+sin((i+delta_x)/100)*200}, Color4{1,0,0,1});
+	po.draw();
+	delta_x += 0.01f;
+	}
+
 }
 
 size_t Scene::Count() const
