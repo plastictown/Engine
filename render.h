@@ -21,6 +21,7 @@
 #include "rectf.h"
 #include "scene.h"
 #include "drawable.h"
+#include "line-object.h"
 
 using namespace std;
 
@@ -29,13 +30,12 @@ using namespace std;
  * @brief The class is responsible for
  * drawing the object and event management
  */
-class Render
-{
+class Render {
   static Render* instance;
   int window = 0;
-  Color4 m_clearColor {1.0f,1.0f,1.0f,0.8f};
-  shared_ptr<Scene> scene {nullptr};
-  std::map<std::string, std::function<void( const Drawable*)>> callbacks;
+  Color4 m_clearColor{1.0f, 1.0f, 1.0f, 0.8f};
+  shared_ptr<Scene> scene{nullptr};
+  std::map<std::string, std::function<void(const Drawable*)>> callbacks;
   const unsigned char KEY_ESCAPE = 27;
 
   void init();
@@ -55,22 +55,28 @@ class Render
   void setupCam(GLint x, GLint y, GLint w, GLint h);
   void reshape(int w, int h);
 
-  void draw_object( const Drawable& o );
-  void draw_point2( const Drawable* po);
-  static void drawPoint2( const Drawable* po);
+  void draw_object(const Drawable& o);
+
+  void draw_point2(const Drawable* po);
+  void draw_line2(const Drawable* po);
+
+  static void drawPoint2(const Drawable* po);
+  static void drawLine2(const Drawable* po);
   /**
    * @brief Draw all
    */
   void draw();
   void Idle();
 
-public:
+ public:
   void SetScene(shared_ptr<Scene>&);
   static void DrawImage(const Image& im, const Point2f& pos);
-  static void DrawObject( const Drawable& o);
+  static void DrawObject(const Drawable& o);
   static void run();
+  static Point2f getWindowSize() noexcept;
   Image LoadImage(const string& filename);
-  Render(int argc, char** argv,
+  Render(int argc,
+         char** argv,
          GLuint w = 640,
          GLuint h = 480,
          GLuint x = 0,
@@ -78,7 +84,6 @@ public:
          char* name = nullptr);
   ~Render();
   void setClearColor(Color4&& c);
-
 };
 
-#endif // RENDER_H_INCLUDED
+#endif  // RENDER_H_INCLUDED

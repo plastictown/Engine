@@ -18,6 +18,7 @@ class Drawable
 protected:
   std::string type;
 public:
+  Drawable(): type()  {  }
   /** @brief Draws the object.
     * Despite the idea of a generic rendering
     * implementation by the Render class, the

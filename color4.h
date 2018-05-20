@@ -11,8 +11,7 @@
  * @brief Contain color in RGBA
  * format.
  */
-struct Color4
-{
+struct Color4 {
   /** @brief Default constructor
    */
   Color4();
@@ -27,13 +26,14 @@ struct Color4
    * @param [in] _b - blue component value
    * @param [in] _a - alpha component value
    */
-  Color4(float _r, float _g, float _b, float _a):
-    r(_r), g(_g), b(_b), a(_a) {};
+  Color4(float _r, float _g, float _b, float _a = 1.0f)
+      : r(_r), g(_g), b(_b), a(_a) {}
   /** @brief Сopy assignment operator
   * @param [in] other - Color4 object to be copied
   * @return reference to current Color4 object
   */
   Color4& operator=(const Color4& other);
+  bool operator==(const Color4& rhs) const noexcept;
 
   GLfloat r; /**< red component value */
   GLfloat g; /**< green component value */
@@ -41,4 +41,4 @@ struct Color4
   GLfloat a; /**< alpha component value */
 };
 
-#endif // _COLOR4_H_
+#endif  // _COLOR4_H_

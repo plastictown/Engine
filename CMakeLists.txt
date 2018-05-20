@@ -13,7 +13,8 @@ add_executable(engine main.cpp
 					  engine.cpp 
 					  SceneLoader.cpp
 					  polygon.cpp
-					  point-object.cpp)
+                                          point-object.cpp
+                                          line-object.cpp)
 
 install(TARGETS engine RUNTIME DESTINATION bin)
 set_property(TARGET engine PROPERTY CXX_STANDARD 14)

@@ -15,6 +15,7 @@
 #include "SceneLoader.h"
 #include "polygon.h"
 
+#include <thread>
 using namespace std;
 int main(int argc, char** argv) try
 {
