@@ -5,6 +5,7 @@
 
 #include "polygon.h"
 #include <utility>
+#include <algorithm>
 
 Polygon::Polygon ()
   :m_vertices{}
@@ -145,4 +146,15 @@ void Polygon::fromRect(const Rectf& rect)try
 catch(...)
 {
   //stub
+}
+
+size_t Polygon::numPoints() const noexcept
+{
+  return m_vertices.size();
+}
+
+bool Polygon::operator == (const Polygon& other) const noexcept
+{
+  if( m_vertices.size() != other.numPoints()) return false;
+  return std::equal(m_vertices.begin(), m_vertices.end(), other.m_vertices.begin());
 }

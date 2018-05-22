@@ -20,6 +20,7 @@ public:
   Polygon(Polygon &&);
   Polygon& operator=(const Polygon&);
   Polygon& operator=(const Polygon&&);
+  bool operator ==(const Polygon&) const noexcept;
   virtual ~Polygon();
   bool empty() const noexcept;
   bool valid() const noexcept;
@@ -28,6 +29,7 @@ public:
   void addPoint(const Point2f&);
   void addPoint(const Point2f&&);
   void fromRect(const Rectf&);
+  size_t numPoints() const noexcept;
 
 private:
   std::vector<Point2f> m_vertices;

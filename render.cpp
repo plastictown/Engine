@@ -119,6 +119,7 @@ void Render::init() {
   glEnable(GL_TEXTURE_2D);
   glEnable(GL_BLEND);
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+  glHint(GL_LINE_SMOOTH_HINT, GL_NICEST);
 
   glutDisplayFunc(draw_func);
   glutReshapeFunc(reshape_func);
