@@ -6,10 +6,10 @@
 #ifndef _ANIMATION_H_INCLUDED_
 #define _ANIMATION_H_INCLUDED_
 #include <GL/gl.h>
-#include "image.h"
+#include <image.h>
 #include <vector>
-#include "incremeter.h"
-#include "runnable.h"
+#include <incremeter.h>
+#include <runnable.h>
 #include <chrono>
 
 using namespace std;

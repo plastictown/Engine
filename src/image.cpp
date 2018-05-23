@@ -3,7 +3,7 @@
  * Copyright (C) 2018  Mikhail Domchenkov
  */
 
-#include "image.h"
+#include <image.h>
 #include <GL/gl.h>
 #include <iostream>
 

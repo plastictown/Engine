@@ -3,9 +3,9 @@
  * Copyright (C) 2018  Mikhail Domchenkov
  */
 
-#include "point-object.h"
+#include <point-object.h>
 #include <utility>
-#include "render.h"
+#include <render.h>
 
 PointObject::PointObject() : Drawable(), point{}, color{} {
   setType("point2f");

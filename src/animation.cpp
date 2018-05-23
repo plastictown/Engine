@@ -3,7 +3,7 @@
  * Copyright (C) 2018  Mikhail Domchenkov
  */
 
-#include "animation.h"
+#include <animation.h>
 #include <thread>
 
 Animation::Animation( const decltype(interval)& msec)

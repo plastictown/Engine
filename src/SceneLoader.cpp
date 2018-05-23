@@ -4,7 +4,7 @@
  */
 
 #include <iostream>
-#include "SceneLoader.h"
+#include <SceneLoader.h>
 
 using namespace std;
 using namespace libconfig;

@@ -6,7 +6,7 @@
 #ifndef _RECTF_H_INCLUDED_
 #define _RECTF_H_INCLUDED_
 
-#include "point2f.h"
+#include <point2f.h>
 
 struct Rectf
 {

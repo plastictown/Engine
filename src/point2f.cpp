@@ -3,8 +3,8 @@
  * Copyright (C) 2018  Mikhail Domchenkov
  */
 
-#include "point2f.h"
-#include "render.h"
+#include <point2f.h>
+#include <render.h>
 
 Point2f::Point2f(const Point2f& other) {
   if (this != &other) *this = other;

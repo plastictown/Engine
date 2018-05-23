@@ -6,9 +6,9 @@
 #ifndef __POINT_OBJECT_H__
 #define __POINT_OBJECT_H__
 
-#include "drawable.h"
-#include "point2f.h"
-#include "color4.h"
+#include <drawable.h>
+#include <point2f.h>
+#include <color4.h>
 
 class PointObject : public Drawable {
  public:

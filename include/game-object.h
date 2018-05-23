@@ -6,9 +6,9 @@
 #ifndef _GAME_OBJECT_H_INCLUDED_
 #define _GAME_OBJECT_H_INCLUDED_
 
-#include "point2f.h"
-#include "rectf.h"
-#include "affine.h"
+#include <point2f.h>
+#include <rectf.h>
+#include <affine.h>
 
 class Image;
 

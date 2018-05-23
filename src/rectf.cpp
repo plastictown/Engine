@@ -3,7 +3,7 @@
  * Copyright (C) 2018  Mikhail Domchenkov
  */
 
-#include "rectf.h"
+#include <rectf.h>
 
 
 bool Rectf::pointInRect(const Point2f& pt) const noexcept

@@ -1,5 +1,5 @@
-#include "line-object.h"
-#include "render.h"
+#include <line-object.h>
+#include <render.h>
 
 LineObject::LineObject() : Drawable(), a{}, b{}, color{} {
   setType("line2f");

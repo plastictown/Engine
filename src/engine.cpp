@@ -3,7 +3,7 @@
  * Copyright (C) 2018  Mikhail Domchenkov
  */
 
-#include "engine.h"
+#include <engine.h>
 
 
 Engine::Engine(int argc, char** argv):

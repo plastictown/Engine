@@ -14,14 +14,14 @@
 #include <stdexcept>
 #include <memory>
 #include <map>
-#include "image.h"
-#include "color4.h"
-#include "point2f.h"
-#include "point-object.h"
-#include "rectf.h"
-#include "scene.h"
-#include "drawable.h"
-#include "line-object.h"
+#include <image.h>
+#include <color4.h>
+#include <point2f.h>
+#include <point-object.h>
+#include <rectf.h>
+#include <scene.h>
+#include <drawable.h>
+#include <line-object.h>
 
 using namespace std;
 

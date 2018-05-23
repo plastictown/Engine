@@ -8,7 +8,7 @@
 
 #include <GL/gl.h>
 #include <GL/glu.h>
-#include "point2f.h"
+#include <point2f.h>
 
 class Affine
 {

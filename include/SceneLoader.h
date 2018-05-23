@@ -10,7 +10,7 @@
 #include <string>
 #include <list>
 #include <cstdint>
-#include "point2f.h"
+#include <point2f.h>
 #include <libconfig.h++>
 
 using namespace std;

@@ -5,10 +5,10 @@
 
 #include <memory>
 #include <cmath>
-#include "image.h"
-#include "scene.h"
-#include "render.h"
-#include "point-object.h"
+#include <image.h>
+#include <scene.h>
+#include <render.h>
+#include <point-object.h>
 
 using namespace std;
 

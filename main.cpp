@@ -11,9 +11,9 @@
 #include <GL/gl.h>
 #include <GL/glu.h>
 #include <GL/freeglut.h>
-#include "engine.h"
-#include "SceneLoader.h"
-#include "polygon.h"
+#include <engine.h>
+#include <SceneLoader.h>
+#include <polygon.h>
 
 #include <thread>
 using namespace std;

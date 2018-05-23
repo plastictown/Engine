@@ -6,8 +6,8 @@
 #ifndef _POINT2F_H_
 #define _POINT2F_H_
 #include <GL/gl.h>
-#include "drawable.h"
-#include "color4.h"
+#include <drawable.h>
+#include <color4.h>
 
 struct Point2f {
  public:

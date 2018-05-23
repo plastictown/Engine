@@ -11,11 +11,11 @@
 #include <cstdint>
 #include <utility>
 
-#include "animation.h"
-#include "image.h"
-#include "game-object.h"
-#include "incremeter.h"
-#include "SceneLoader.h"
+#include <animation.h>
+#include <image.h>
+#include <game-object.h>
+#include <incremeter.h>
+#include <SceneLoader.h>
 
 using namespace std;
 

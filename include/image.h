@@ -12,10 +12,10 @@
 #define SDL_MAIN_HANDLED
 #include <SDL/SDL.h>
 #include <SDL/SDL_image.h>
-#include "rectf.h"
-#include "point2f.h"
-#include "incremeter.h"
-#include "game-object.h"
+#include <rectf.h>
+#include <point2f.h>
+#include <incremeter.h>
+#include <game-object.h>
 
 class Image: public GameObject
 {
