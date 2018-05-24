@@ -14,11 +14,18 @@
 #include <engine.h>
 #include <SceneLoader.h>
 #include <polygon.h>
+#include <vertex.h>
 
 #include <thread>
 using namespace std;
 int main(int argc, char** argv) try
 {
+  vertex<float, 3> v{1,2,3};
+
+  v.setv(0, 8);
+
+  std::cout << v.getv(4) << endl;;
+
   Engine e(argc, argv);
 
   std::shared_ptr<Scene> scn = std::make_shared<Scene>();
