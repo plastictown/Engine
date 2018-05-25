@@ -19,6 +19,7 @@
 #include <polygon.h>
 #include <vertex.h>
 #include <vertex2f.h>
+#include <vertex2fc.h>
 #include <color.h>
 
 using namespace std;
@@ -26,8 +27,8 @@ using namespace std;
 int main(int argc, char** argv) try {
     Engine e(argc, argv);
 
-    vertex2f v(1,5);
-    vertex2f vv(2,3);
+    vertex2f v(1, 5);
+    vertex2f vv(2, 3);
 
     cout << (vv == v) << endl;
 
