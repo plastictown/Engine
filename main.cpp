@@ -18,31 +18,26 @@
 
 #include <thread>
 using namespace std;
-int main(int argc, char** argv) try
-{
-  vertex<float, 3> v{1,2,3};
+int main(int argc, char** argv) try {
+    vertex<float, 3> v{1, 2, 3};
 
-  v.setv(0, 8);
+    v.setAt(0, 8);
 
-  std::cout << v.getv(4) << endl;;
+    std::cout << v.getAt(4) << endl;;
 
-  Engine e(argc, argv);
+    Engine e(argc, argv);
 
-  std::shared_ptr<Scene> scn = std::make_shared<Scene>();
-  scn->setVisible(true);
-  e.SetScene(std::move(scn));
+    std::shared_ptr<Scene> scn = std::make_shared<Scene>();
+    scn->setVisible(true);
+    e.SetScene(std::move(scn));
 
-  Engine::Run();
+    Engine::Run();
 
-  cin.get();
-  return 0;
-}
-catch(std::exception& e)
-{
+    cin.get();
+    return 0;
+} catch(std::exception& e) {
     std::cerr << __FUNCTION__ << ": " << e.what() << std::endl;
     return -1;
-}
-catch(...)
-{
+} catch(...) {
     std::cerr << __FUNCTION__ << ": unknown exception" << std::endl;
 }

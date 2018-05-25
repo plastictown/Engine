@@ -14,10 +14,12 @@ add_executable(engine main.cpp
 					  src/SceneLoader.cpp
 					  src/polygon.cpp
                                           src/point-object.cpp
-                                          src/line-object.cpp)
+                                          src/line-object.cpp
+                                          src/color.cpp
+                                          )
 
 install(TARGETS engine RUNTIME DESTINATION bin)
 set_property(TARGET engine PROPERTY CXX_STANDARD 14)
-target_include_directories(engine PUBLIC ./ ./include)
+target_include_directories(engine PUBLIC ./ include)
 target_link_libraries(engine PUBLIC pthread glut GL GLU SDL SDL_image config++)
 target_compile_options(engine PUBLIC -Wall -g)
