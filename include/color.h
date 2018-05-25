@@ -30,7 +30,7 @@ public:
   color<T, N> & operator=(const color<T, N>& rhs );
   bool operator==(const color<T, N>& rhs );
   void set(const std::initializer_list<T>& ilist );
-  void setAt(const size_t index, T& value);
+  void setAt(const size_t index, const T& value);
   T& getAt(const size_t index);
 
 protected:
@@ -90,7 +90,7 @@ void color<T, N> ::set(const std::initializer_list<T>& ilist)
 }
 
 template<typename T, size_t N>
-void color<T, N>::setAt(const size_t index, T &value)
+void color<T, N>::setAt(const size_t index, const T &value)
 {
   if(index >= N)
     throw std::out_of_range("color::setAt(): invalid argument");
