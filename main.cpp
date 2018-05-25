@@ -1,6 +1,7 @@
 /*
  * https://github.com/plastictown/Engine
  * Copyright (C) 2018  Mikhail Domchenkov
+ * agplastictown@yandex.ru
  */
 
 #include <iostream>
@@ -14,16 +15,17 @@
 #include <engine.h>
 #include <SceneLoader.h>
 #include <polygon.h>
-#include <vertex.h>
-
 #include <thread>
+#include <vertex.h>
 using namespace std;
 int main(int argc, char** argv) try {
-    vertex<float, 3> v{1, 2, 3};
+    vertex<float, 3> v1{1, 2, 3};
+    vertex<float, 3> v2{4, 4, 7};
+    vertex<float, 3> v3{1, 2, 3};
 
-    v.setAt(0, 8);
+    vertex<float, 3> v4(v2);
 
-    std::cout << v.getAt(4) << endl;;
+    std::cout << v1.getAt(2) << " " << (v4 == v2) << endl;;
 
     Engine e(argc, argv);
 
