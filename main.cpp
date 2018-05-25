@@ -1,6 +1,7 @@
 /*
  * https://github.com/plastictown/Engine
  * Copyright (C) 2018  Mikhail Domchenkov
+ * agplastictown@yandex.ru
  */
 
 #include <iostream>
@@ -16,12 +17,17 @@
 #include <engine.h>
 #include <SceneLoader.h>
 #include <polygon.h>
+#include <thread>
 #include <vertex.h>
+<<<<<<< HEAD
 #include <color.h>
 
+=======
+>>>>>>> dev
 using namespace std;
 
 int main(int argc, char** argv) try {
+<<<<<<< HEAD
     color<int, 3> c1 {1, 2, 3};
     color<int, 3> c2 {1, 2, 3};
     auto a1 = c1.getAt(0);
@@ -39,6 +45,15 @@ int main(int argc, char** argv) try {
 //    v.setAt(0, 8);
 
 //    std::cout << v.getAt(4) << endl;
+=======
+    vertex<float, 3> v1{1, 2, 3};
+    vertex<float, 3> v2{4, 4, 7};
+    vertex<float, 3> v3{1, 2, 3};
+
+    vertex<float, 3> v4(v2);
+
+    std::cout << v1.getAt(2) << " " << (v4 == v2) << endl;;
+>>>>>>> dev
 
 //    Engine e(argc, argv);
 
