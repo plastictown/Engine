@@ -15,7 +15,6 @@ add_executable(engine main.cpp
 					  src/polygon.cpp
                                           src/point-object.cpp
                                           src/line-object.cpp
-                                          src/color.cpp
                                           )
 
 install(TARGETS engine RUNTIME DESTINATION bin)

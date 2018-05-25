@@ -4,15 +4,24 @@
 #include <type_traits>
 #include <initializer_list>
 #include <array>
+#include <vector>
 #include <exception>
 
+typedef unsigned char uchar;
 
-template <typename T, size_t n_colorCount>
+template <typename T, size_t N>
 class color {
   public:
     /// defaut ctor
-    color<T, n_colorCount>();
-    color<T, n_colorCount> (const std::initializer_list<T> &);
+    color<T, N>();
+    color<T, N> (const std::initializer_list<T> & col);
+    void set(const std::initializer_list<T>& col );
+    void setAt(const size_t index, T&value);
+    T& get(const size_t index);
+
+  protected:
+    std::array<T, N> colors;
+
 
   private:
 
