@@ -9,7 +9,7 @@
 Engine::Engine(int argc, char** argv):
   render(argc, argv)
 {
-  scene=make_shared<Scene>();
+  scene = make_shared<Scene>();
   render.SetScene(scene);
 }
 
@@ -37,6 +37,6 @@ void Engine::RemoveObject(uint32_t key)
 
 void Engine::SetScene(shared_ptr<Scene>&& scn)
 {
-    scene = std::move(scn);
-    render.SetScene(scene);
+  scene = std::move(scn);
+  render.SetScene(scene);
 }

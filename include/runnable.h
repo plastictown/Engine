@@ -16,7 +16,10 @@ class runnable
 {
 public:
   virtual void run() = 0;
-  virtual ~runnable(){stop();}
+  virtual ~runnable()
+  {
+    stop();
+  }
   void stop()
   {
     stopflag = true;
@@ -43,9 +46,9 @@ private:
   {
     is_running = true;
     while(!stopflag)
-      {
-        run();
-      }
+    {
+      run();
+    }
     is_running = false;
   }
 private:

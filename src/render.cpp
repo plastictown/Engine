@@ -9,17 +9,20 @@
 
 Render* Render::instance = nullptr;
 
-void Render::draw_object(const Drawable& o) {
+void Render::draw_object(const Drawable& o)
+{
   auto res = callbacks.find(o.getType());
   if (res != callbacks.cend())
     callbacks[o.getType()](&o);
 }
 
-void Render::DrawObject(const Drawable& o) {
+void Render::DrawObject(const Drawable& o)
+{
   instance->draw_object(o);
 }
 
-void Render::draw_point2(const Drawable* po) {
+void Render::draw_point2(const Drawable* po)
+{
   auto p = dynamic_cast<const PointObject*>(po);
 
   glBegin(GL_POINTS);
@@ -29,7 +32,8 @@ void Render::draw_point2(const Drawable* po) {
   glEnd();
 }
 
-void Render::draw_line2(const Drawable* po) {
+void Render::draw_line2(const Drawable* po)
+{
   auto p = dynamic_cast<const LineObject*>(po);
   glBegin(GL_LINES);
   glColor4f(p->getColor().r, p->getColor().g, p->getColor().b, p->getColor().a);
@@ -40,23 +44,28 @@ void Render::draw_line2(const Drawable* po) {
   glEnd();
 }
 
-void Render::drawPoint2(const Drawable* po) {
+void Render::drawPoint2(const Drawable* po)
+{
   instance->draw_point2(po);
 }
 
-void Render::drawLine2(const Drawable* po) {
+void Render::drawLine2(const Drawable* po)
+{
   instance->draw_line2(po);
 }
 
-void Render::Entry(int state) {
+void Render::Entry(int state)
+{
   // TODO
 }
 
-void Render::entry_func(int state) {
+void Render::entry_func(int state)
+{
   instance->Entry(state);
 }
 
-void Render::Keyboard(unsigned char key, int x, int y) {
+void Render::Keyboard(unsigned char key, int x, int y)
+{
   // TODO
   if (key == KEY_ESCAPE)
 #ifdef FREEGLUT
@@ -66,51 +75,62 @@ void Render::Keyboard(unsigned char key, int x, int y) {
 #endif  //! FREEGLUT
 }
 
-void Render::keyboard_func(unsigned char key, int x, int y) {
+void Render::keyboard_func(unsigned char key, int x, int y)
+{
   instance->Keyboard(key, x, y);
 }
 
-void Render::Motion(int x, int y) {
+void Render::Motion(int x, int y)
+{
   // TODO
 }
 
-void Render::motion_func(int x, int y) {
+void Render::motion_func(int x, int y)
+{
   instance->Motion(x, y);
 }
 
-void Render::Mouse(int button, int state, int x, int y) {
+void Render::Mouse(int button, int state, int x, int y)
+{
   // int modifiers = glutGetModifiers();
   // using with GLUT_ACTIVE_CTRL, GLUT_ACTIVE_ALT, GLUT_ACTIVE_SHIFT
   // TODO
 }
 
-void Render::mouse_func(int button, int state, int x, int y) {
+void Render::mouse_func(int button, int state, int x, int y)
+{
   instance->Mouse(button, state, x, y);
 }
 
-void Render::passive_motion_func(int x, int y) {
+void Render::passive_motion_func(int x, int y)
+{
   instance->PassiveMotion(x, y);
 }
 
-void Render::PassiveMotion(int x, int y) {
+void Render::PassiveMotion(int x, int y)
+{
   // TODO
 }
 
-void Render::idle_fucn() {
+void Render::idle_fucn()
+{
   instance->Idle();
 }
 
-void Render::Idle() {
+void Render::Idle()
+{
   draw();
 }
 
-Point2f Render::getWindowSize() noexcept {
+Point2f Render::getWindowSize() noexcept
+{
   GLfloat x = glutGet(GLUT_WINDOW_WIDTH);
   GLfloat y = glutGet(GLUT_WINDOW_HEIGHT);
   return Point2f{x, y};
 }
 
-void Render::init() {
+void Render::init()
+{
   int image_flags = IMG_INIT_PNG;
   int init = IMG_Init(image_flags);
   if ((init & image_flags) != image_flags)
@@ -136,15 +156,18 @@ void Render::init() {
   callbacks.insert(make_pair(string("line2f"), Render::drawLine2));
 }
 
-void Render::draw_func() {
+void Render::draw_func()
+{
   instance->draw();
 }
 
-void Render::reshape_func(GLint w, GLint h) {
+void Render::reshape_func(GLint w, GLint h)
+{
   instance->reshape(w, h);
 }
 
-void Render::setupCam(GLint x, GLint y, GLint w, GLint h) {
+void Render::setupCam(GLint x, GLint y, GLint w, GLint h)
+{
   glMatrixMode(GL_PROJECTION);
   glLoadIdentity();
   gluOrtho2D(0, w, h, 0);
@@ -153,7 +176,8 @@ void Render::setupCam(GLint x, GLint y, GLint w, GLint h) {
   glLoadIdentity();
 }
 
-void Render::reshape(int w, int h) {
+void Render::reshape(int w, int h)
+{
   glutPostRedisplay();
   setupCam(0, 0, w, h);
 }
@@ -164,7 +188,8 @@ Render::Render(int argc,
                GLuint h,
                GLuint x,
                GLuint y,
-               char* name) {
+               char* name)
+{
   instance = this;
   glutInit(&argc, argv);
   glutInitDisplayMode(GLUT_RGBA | GLUT_DOUBLE | GLUT_ALPHA);
@@ -181,7 +206,8 @@ Render::Render(int argc,
   setupCam(0, 0, 640, 480);
 }
 
-Render::~Render() {
+Render::~Render()
+{
   // disable callback
   glutDisplayFunc(nullptr);
   glutReshapeFunc(nullptr);
@@ -195,15 +221,18 @@ Render::~Render() {
   Image::cleanup();
 }
 
-void Render::setClearColor(Color4&& c) {
+void Render::setClearColor(Color4&& c)
+{
   m_clearColor = c;
   glClearColor(c.r, c.g, c.b, c.a);
 }
 
-void Render::draw() {
+void Render::draw()
+{
   glClear(GL_COLOR_BUFFER_BIT);
 
-  if (scene != nullptr) {
+  if (scene != nullptr)
+  {
     if (scene->isVisible())
       scene->Draw();
   }
@@ -212,7 +241,8 @@ void Render::draw() {
   glutSwapBuffers();
 }
 
-void Render::DrawImage(const Image& im, const Point2f& pos) {
+void Render::DrawImage(const Image& im, const Point2f& pos)
+{
   glBindTexture(GL_TEXTURE_2D, im.getId());
   Rectf r(Point2f(0, 0), Point2f(im.width(), im.height()));
   r.heightByAspect(im.getAspect());
@@ -231,10 +261,12 @@ void Render::DrawImage(const Image& im, const Point2f& pos) {
   glPopMatrix();
 }
 
-void Render::run() {
+void Render::run()
+{
   glutMainLoop();
 }
 
-void Render::SetScene(shared_ptr<Scene>& s) {
+void Render::SetScene(shared_ptr<Scene>& s)
+{
   scene = s;
 }

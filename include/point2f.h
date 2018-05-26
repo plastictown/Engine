@@ -9,8 +9,9 @@
 #include <drawable.h>
 #include <color4.h>
 
-struct Point2f {
- public:
+struct Point2f
+{
+public:
   Point2f() {}
   ~Point2f() {}
   Point2f(const Point2f& other);

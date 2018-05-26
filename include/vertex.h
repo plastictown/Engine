@@ -19,61 +19,66 @@
  * contains N components of type T
  */
 template <typename T, size_t N>
-class vertex {
-  public:
-    /// default ctor
-    vertex<T, N>();
-    /// ctor with N values in il
-    vertex<T, N>(const std::initializer_list<T>& il);
-    /// copy ctor
-    vertex<T, N>(const vertex<T, N>& other);
-    /// set value val by index vnum
-    void setAt(size_t , const T& idx);
-    /// get value by index vnum
-    const T& getAt(size_t idx) const;
-    /// operator =
-    vertex<T, N>& operator=(const vertex<T, N>& rhs);
-    /// operator ==
-    bool operator==(const vertex<T, N>& rhs) const;
-    /// operator []
-    T& operator [] (size_t idx);
-  protected:
-    std::array<T, N> coords;
+class vertex
+{
+public:
+  /// default ctor
+  vertex<T, N>();
+  /// ctor with N values in il
+  vertex<T, N>(const std::initializer_list<T>& il);
+  /// copy ctor
+  vertex<T, N>(const vertex<T, N>& other);
+  /// set value val by index vnum
+  void setAt(size_t , const T& idx);
+  /// get value by index vnum
+  const T& getAt(size_t idx) const;
+  /// operator =
+  vertex<T, N>& operator=(const vertex<T, N>& rhs);
+  /// operator ==
+  bool operator==(const vertex<T, N>& rhs) const;
+  /// operator []
+  T& operator [] (size_t idx);
+protected:
+  std::array<T, N> coords;
 };
 
 template <typename T, size_t N>
-vertex<T, N>::vertex() {
-    static_assert( N > 1, "too few coordinates! should be 2 or more");
-    static_assert(std::is_arithmetic
-                  <typename std::remove_cv
-                  < typename std::remove_reference
-                  <T>::type>::type>::value,
-                  "values must have an arithmetic type!");
-    coords.fill(0);
+vertex<T, N>::vertex()
+{
+  static_assert( N > 1, "too few coordinates! should be 2 or more");
+  static_assert(std::is_arithmetic
+                <typename std::remove_cv
+                < typename std::remove_reference
+                <T>::type>::type>::value,
+                "values must have an arithmetic type!");
+  coords.fill(0);
 }
 
 template <typename T, size_t N>
 vertex<T, N>::vertex(const std::initializer_list<T>& il)
-    : vertex<T, N>() {
-    if(il.size() != N)
-        throw std::invalid_argument("vertex::ctor(): incorrect number of vertex coordinates");
-    size_t ctr = 0u;
-    for(auto& i : il)
-        coords[ctr++] = i;
+  : vertex<T, N>()
+{
+  if(il.size() != N)
+    throw std::invalid_argument("vertex::ctor(): incorrect number of vertex coordinates");
+  size_t ctr = 0u;
+  for(auto& i : il)
+    coords[ctr++] = i;
 }
 
 template <typename T, size_t N>
-void vertex<T, N>::setAt(size_t vnum, const T& val) {
-    if(vnum >= N)
-        throw std::out_of_range("vertex::setAt(): invalid index");
-    coords[vnum] = val;
+void vertex<T, N>::setAt(size_t vnum, const T& val)
+{
+  if(vnum >= N)
+    throw std::out_of_range("vertex::setAt(): invalid index");
+  coords[vnum] = val;
 }
 
 template <typename T, size_t N>
-const T& vertex<T, N>::getAt(size_t vnum) const {
-    if(vnum >= N)
-        throw std::out_of_range("vertex::getAt(): invalid index");
-    return coords[vnum];
+const T& vertex<T, N>::getAt(size_t vnum) const
+{
+  if(vnum >= N)
+    throw std::out_of_range("vertex::getAt(): invalid index");
+  return coords[vnum];
 }
 
 template <typename T, size_t N>

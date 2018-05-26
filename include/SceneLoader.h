@@ -33,8 +33,8 @@ typedef struct ImageDescription
   }
   void clear()
   {
-    pos= {0.0f,0.0f};
-    sz= {0.0f,0.0f};
+    pos = {0.0f, 0.0f};
+    sz = {0.0f, 0.0f};
     file.clear();
     visibility = false;
   }
@@ -59,8 +59,8 @@ typedef struct AnimationDescription
   }
   void clear()
   {
-    pos= {0.0f,0.0f};
-    sz= {0.0f,0.0f};
+    pos = {0.0f, 0.0f};
+    sz = {0.0f, 0.0f};
     interval = 0u;
     files.clear();
     visibility = false;
@@ -75,10 +75,10 @@ typedef struct SceneDescription
   void clear()
   {
     name.clear();
-    pos={0.0f,0.0f};
-    visibility=false;
+    pos = {0.0f, 0.0f};
+    visibility = false;
   }
-}scn_desc_t;
+} scn_desc_t;
 
 class SceneLoader
 {

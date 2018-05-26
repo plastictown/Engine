@@ -30,7 +30,8 @@ using namespace std;
  * @brief The class is responsible for
  * drawing the object and event management
  */
-class Render {
+class Render
+{
   static Render* instance;
   int window = 0;
   Color4 m_clearColor{1.0f, 1.0f, 1.0f, 0.8f};
@@ -68,7 +69,7 @@ class Render {
   void draw();
   void Idle();
 
- public:
+public:
   void SetScene(shared_ptr<Scene>&);
   static void DrawImage(const Image& im, const Point2f& pos);
   static void DrawObject(const Drawable& o);

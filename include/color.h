@@ -24,11 +24,11 @@ class color
 public:
   /// defaut ctor
   color<T, N>();
-  color<T, N> (const std::initializer_list<T> & ilist);
+  color<T, N> (const std::initializer_list<T>& ilist);
   ///copy ctor
   color<T, N>(const color<T, N>& rhs);
-  color<T, N> & operator=(const color<T, N>& rhs );
-  bool operator==(const color<T, N>& rhs );
+  color<T, N>& operator=(const color<T, N>& rhs );
+  bool operator==(const color<T, N>& rhs ) const;
   void set(const std::initializer_list<T>& ilist );
   void setAt(const size_t index, const T& value);
   T& getAt(const size_t index);
@@ -51,30 +51,30 @@ color<T, N>::color()
 }
 
 template<typename T, size_t N>
-color<T, N>::color(const std::initializer_list<T> &ilist): color<T, N>()
+color<T, N>::color(const std::initializer_list<T>& ilist): color<T, N>()
 {
   set(ilist);
 }
 
 template <typename T, size_t N>
-color<T, N>::color(const color<T, N> &rhs)
+color<T, N>::color(const color<T, N>& rhs)
 {
   if(this == &rhs)
     return;
   std::copy(rhs.colors.cbegin(), rhs.colors.cend(), colors.begin());
 }
 template<typename T, size_t N>
-color<T, N> &color<T, N>::operator=(const color<T, N> &rhs)
+color<T, N>& color<T, N>::operator=(const color<T, N>& rhs)
 {
   if(this != &rhs)
-    {
-      std::copy(rhs.colors.cbegin(), rhs.colors.cend(), colors.begin());
-    }
+  {
+    std::copy(rhs.colors.cbegin(), rhs.colors.cend(), colors.begin());
+  }
   return * this;
 }
 
 template <typename T, size_t N>
-bool color<T, N>::operator==(const color<T, N> &rhs)
+bool color<T, N>::operator==(const color<T, N>& rhs) const
 {
   return ((this == &rhs) ? true : (colors == rhs.colors));
 }
@@ -90,7 +90,7 @@ void color<T, N> ::set(const std::initializer_list<T>& ilist)
 }
 
 template<typename T, size_t N>
-void color<T, N>::setAt(const size_t index, const T &value)
+void color<T, N>::setAt(const size_t index, const T& value)
 {
   if(index >= N)
     throw std::out_of_range("color::setAt(): invalid argument");
@@ -98,7 +98,7 @@ void color<T, N>::setAt(const size_t index, const T &value)
 }
 
 template<typename T, size_t N>
-T &color<T, N>::getAt(const size_t index)
+T& color<T, N>::getAt(const size_t index)
 {
   if(index >= N)
     throw std::out_of_range("color::getAt(): invalid argument");

@@ -7,7 +7,7 @@
 #include <thread>
 
 Animation::Animation( const decltype(interval)& msec)
-: interval {msec}
+  : interval {msec}
 {
   setType(GameObjectType::TypeAnimation);
   this->start();
@@ -15,7 +15,7 @@ Animation::Animation( const decltype(interval)& msec)
 
 Animation::Animation( const uint32_t msec): interval {std::chrono::milliseconds{msec}}
 {
-    setType(GameObjectType::TypeAnimation);
+  setType(GameObjectType::TypeAnimation);
   this->start();
 }
 
@@ -27,16 +27,16 @@ void Animation::set_interval(const decltype(interval)& msec)
 void Animation::AddImage(const Image& img)
 {
   images.push_back(img);
-  index.set_max(images.size()-1);
+  index.set_max(images.size() - 1);
   index.set_value(0);
 }
 
 void Animation::AddImage(const vector<Image>& v)
 {
-  for(auto& i:v)
-    {
-      AddImage(i);
-    }
+  for(auto& i : v)
+  {
+    AddImage(i);
+  }
 }
 
 const Image& Animation::getCurrentImage() const

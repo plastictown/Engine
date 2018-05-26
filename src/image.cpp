@@ -14,15 +14,15 @@ void Image::cleanup()
 {
   if(textures.empty())
     return;
-  for(auto i:textures)
-    {
-      glDeleteTextures(1, &i);
-    }
+  for(auto i : textures)
+  {
+    glDeleteTextures(1, &i);
+  }
 }
 
 bool Image::load(const std::string& fname)
 {
-  SDL_RWops *rwop = SDL_RWFromFile(fname.c_str(), "rb");
+  SDL_RWops* rwop = SDL_RWFromFile(fname.c_str(), "rb");
   if(!rwop)
     return false;
   SDL_Surface* surface = IMG_LoadPNG_RW(rwop);

@@ -38,7 +38,9 @@ public:
     return m_id;
   }
   Image(): m_id {id_gen.get_next()}, box {}
-  {setType(GameObjectType::TypeImage);}
+  {
+    setType(GameObjectType::TypeImage);
+  }
   int width() const noexcept
   {
     return box.right_bottom.x;

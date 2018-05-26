@@ -20,21 +20,24 @@ public:
   void setX(const float& x);
   void setY(const float& y);
   vertex2f& operator=(const vertex2f& rhs);
-  bool operator ==(const vertex2f& rhs);
+  bool operator ==(const vertex2f& rhs) const;
 };
 
 vertex2f::vertex2f()
-  :vertex()
+  : vertex()
 {
 }
 
 vertex2f::vertex2f(const vertex2f& other)
-  :vertex(other)
+  : vertex(other)
 {
 }
 
 vertex2f::vertex2f( float x, float y)
-  : vertex({x,y})
+  : vertex(
+{
+  x, y
+})
 {
 }
 
@@ -62,11 +65,11 @@ vertex2f& vertex2f::operator=(const vertex2f& rhs)
 {
   if(this == &rhs)
     return *this;
-  *this = rhs;
+  this->coords = rhs.coords;
   return *this;
 }
 
-bool vertex2f::operator ==(const vertex2f& rhs)
+bool vertex2f::operator ==(const vertex2f& rhs) const
 {
   if(this == &rhs)
     return true;

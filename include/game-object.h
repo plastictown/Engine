@@ -18,9 +18,9 @@ class Image;
  */
 enum class GameObjectType
 {
-    TypeUnknown,
-    TypeImage,
-    TypeAnimation
+  TypeUnknown,
+  TypeImage,
+  TypeAnimation
 };
 
 /** @class GameObject
@@ -30,10 +30,10 @@ class GameObject
 {
 public:
   GameObject()
-  :m_pos{},
-   m_type{GameObjectType::TypeUnknown},
-   m_visibility{false},
-   ct{}
+    : m_pos{},
+      m_type{GameObjectType::TypeUnknown},
+      m_visibility{false},
+      ct{}
   {}
   /**
    * @brief Set new position of the scene
@@ -63,7 +63,7 @@ public:
    */
   const GameObjectType& getType() const
   {
-      return m_type;
+    return m_type;
   }
   /**
    * @brief Set object type
@@ -74,25 +74,28 @@ public:
    */
   void setType(const GameObjectType& type)
   {
-      m_type = type;
+    m_type = type;
   }
   void setVisible(bool state) noexcept
-      {
-        m_visibility = state;
-      }
+  {
+    m_visibility = state;
+  }
   bool isVisible() const noexcept
-      {
-        return m_visibility;
-      }
+  {
+    return m_visibility;
+  }
   virtual ~GameObject() {}
-  Affine& CT(){return ct;}
+  Affine& CT()
+  {
+    return ct;
+  }
 protected:
   Point2f m_pos;
 private:
-    GameObjectType m_type;
-    /// Object visibility
-    bool m_visibility;
-    Affine ct;
+  GameObjectType m_type;
+  /// Object visibility
+  bool m_visibility;
+  Affine ct;
 };
 
 #endif // _GAME_OBJECT_H_INCLUDED_
