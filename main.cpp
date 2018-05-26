@@ -18,6 +18,7 @@
 #include <SceneLoader.h>
 #include <polygon.h>
 #include <vertex.h>
+#include <vertex2f.h>
 #include <color.h>
 
 using namespace std;
@@ -25,13 +26,19 @@ using namespace std;
 int main(int argc, char** argv) try {
     Engine e(argc, argv);
 
+    vertex2f v{1,5};
+    vertex2f vv(2,3);
+
+    cout << v.data()[1] << endl;
+
+//-------------------------------------------------------------//
     std::shared_ptr<Scene> scn = std::make_shared<Scene>();
     scn->setVisible(true);
     e.SetScene(std::move(scn));
 
     Engine::Run();
 
-    cin.get();
+    //cin.get();
     return 0;
 } catch(std::exception& e) {
     std::cerr << __FUNCTION__ << ": " << e.what() << std::endl;

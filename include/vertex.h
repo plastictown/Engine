@@ -4,7 +4,6 @@
  * agplastictown@yandex.ru
  */
 
-
 #ifndef __VERTEX_H_INCLUDED__
 #define __VERTEX_H_INCLUDED__
 
@@ -25,17 +24,19 @@ class vertex {
     /// default ctor
     vertex<T, N>();
     /// ctor with N values in il
-    vertex<T, N>(const std::initializer_list<T>&);
+    vertex<T, N>(const std::initializer_list<T>& il);
     /// copy ctor
-    vertex<T, N>(const vertex<T, N>&);
-    /// set value val by index vnum
-    void setAt(size_t , const T&);
-    /// get value by index vnum
-    T& getAt(size_t);
+    vertex<T, N>(const vertex<T, N>& other);
+    /// set value val by index idx
+    void setAt(size_t , const T& idx);
+    /// get value by index idx
+    const T& getAt(size_t idx) const;
     /// operator =
-    vertex<T, N>& operator=(const vertex<T, N>&);
+    vertex<T, N>& operator=(const vertex<T, N>& rhs);
     /// operator ==
-    bool operator==(const vertex<T, N>&);
+    bool operator==(const vertex<T, N>& rhs) const;
+    /// operator []
+    T& operator [] (size_t idx);
   protected:
     std::array<T, N> coords;
 };
@@ -64,14 +65,14 @@ vertex<T, N>::vertex(const std::initializer_list<T>& il)
 template <typename T, size_t N>
 void vertex<T, N>::setAt(size_t vnum, const T& val) {
     if(vnum >= N)
-        throw std::out_of_range("vertex::setv(): invalid index");
+        throw std::out_of_range("vertex::setAt(): invalid index");
     coords[vnum] = val;
 }
 
 template <typename T, size_t N>
-T& vertex<T, N>::getAt(size_t vnum) {
+const T& vertex<T, N>::getAt(size_t vnum) const {
     if(vnum >= N)
-        throw std::out_of_range("vertex::getv(): invalid index");
+        throw std::out_of_range("vertex::getAt(): invalid index");
     return coords[vnum];
 }
 
@@ -85,7 +86,7 @@ vertex<T, N>& vertex<T, N>::operator=(const vertex<T, N>& rhs)
 }
 
 template <typename T, size_t N>
-bool vertex<T, N>::operator==(const vertex<T, N>& rhs)
+bool vertex<T, N>::operator==(const vertex<T, N>& rhs) const
 {
   if(this == &rhs)
     return true;
@@ -100,4 +101,11 @@ vertex<T, N>::vertex(const vertex<T, N>& other)
   std::copy(other.coords.cbegin(), other.coords.cend(), coords.begin());
 }
 
+template <typename T, size_t N>
+T& vertex<T, N>::operator [] (size_t idx)
+{
+  if(idx >= N)
+    throw std::out_of_range("vertex::operator[]: invalid index");
+  return coords[idx];
+}
 #endif // __VERTEX_H_INCLUDED__

@@ -1,6 +1,7 @@
 /*
  * https://github.com/plastictown/Engine
  * Copyright (C) 2018  Mikhail Domchenkov
+ * agplastictown@yandex.ru
  * see https://wrf.ecse.rpi.edu//Research/Short_Notes/pnpoly.html
  * for PNPOLY algorithm
  */

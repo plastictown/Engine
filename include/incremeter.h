@@ -1,6 +1,7 @@
 /*
  * https://github.com/plastictown/Engine
  * Copyright (C) 2018  Mikhail Domchenkov
+ * agplastictown@yandex.ru
  */
 
 #ifndef _INCREMETER_H_INCLUDED_
