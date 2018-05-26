@@ -45,11 +45,11 @@ vertex2f& vertex2f::operator=(const vertex2f& rhs)
 {
   if(this == &rhs)
     return *this;
-  *this = rhs;
+  this->coords = rhs.coords;
   return *this;
 }
 
-bool vertex2f::operator ==(const vertex2f& rhs)
+bool vertex2f::operator ==(const vertex2f& rhs) const noexcept
 {
   if(this == &rhs)
     return true;

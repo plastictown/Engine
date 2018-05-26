@@ -10,7 +10,7 @@
 #define _POLYGON_H_
 
 #include <vector>
-#include <point2f.h>
+#include <vertex2f.h>
 #include <rectf.h>
 
 class Polygon
@@ -22,18 +22,18 @@ public:
   Polygon& operator=(const Polygon&);
   Polygon& operator=(const Polygon&&);
   bool operator ==(const Polygon&) const noexcept;
-  virtual ~Polygon();
+  virtual ~Polygon() noexcept;
   bool empty() const noexcept;
   bool valid() const noexcept;
-  bool pointInPolygon(const Point2f&) const;
-  bool pointInPolygon(const Point2f&&)const;
-  void addPoint(const Point2f&);
-  void addPoint(const Point2f&&);
-  void fromRect(const Rectf&);
+  bool pointInPolygon(const vertex2f&) const;
+  bool pointInPolygon(const vertex2f&&)const;
+  void addPoint(const vertex2f&);
+  void addPoint(const vertex2f&&);
+  //void fromRect(const Rectf&);
   size_t numPoints() const noexcept;
 
 private:
-  std::vector<Point2f> m_vertices;
+  std::vector<vertex2f> m_vertices;
 };
 
 #endif /* _POLYGON_H_ */

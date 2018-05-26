@@ -56,13 +56,13 @@ catch (...)
   m_vertices.clear ();
   throw;
 }
-Polygon::~Polygon () try
+Polygon::~Polygon () noexcept try
 {
   m_vertices.clear ();
 }
 catch (...)
 {
-  //stub
+  // handle it!
 }
 bool Polygon::empty () const noexcept
 {
@@ -73,20 +73,20 @@ bool Polygon::valid () const noexcept
   return m_vertices.size () > 2;
 }
 
-bool Polygon::pointInPolygon (const Point2f& p) const try
+bool Polygon::pointInPolygon (const vertex2f& p) const try
 {
   if (!valid ())
     return false;
   int nvert = m_vertices.size ();
-  float testx = p.x;
-  float testy = p.y;
+  float testx = p.getX();
+  float testy = p.getY();
   int i, j, c = 0;
   for (i = 0, j = nvert - 1; i < nvert; j = i++)
     {
-      if (((m_vertices[i].y > testy) != (m_vertices[j].y > testy))
+      if (((m_vertices[i].getY() > testy) != (m_vertices[j].getY() > testy))
 	  && (testx
-	      < (m_vertices[j].x - m_vertices[i].x) * (testy - m_vertices[i].y)
-		  / (m_vertices[j].y - m_vertices[i].y) + m_vertices[i].x))
+	      < (m_vertices[j].getX() - m_vertices[i].getX()) * (testy - m_vertices[i].getY())
+		  / (m_vertices[j].getY() - m_vertices[i].getY()) + m_vertices[i].getX()))
 	c = !c;
     }
   return static_cast<bool> (c);
@@ -96,20 +96,20 @@ catch (...)
   //stub
   return false;
 }
-bool Polygon::pointInPolygon (const Point2f&& p) const try
+bool Polygon::pointInPolygon (const vertex2f&& p) const try
 {
   if (!valid ())
     return false;
   int nvert = m_vertices.size ();
-  float testx = p.x;
-  float testy = p.y;
+  float testx = p.getX();
+  float testy = p.getY();
   int i, j, c = 0;
   for (i = 0, j = nvert - 1; i < nvert; j = i++)
     {
-      if (((m_vertices[i].y > testy) != (m_vertices[j].y > testy))
+      if (((m_vertices[i].getY() > testy) != (m_vertices[j].getY() > testy))
 	  && (testx
-	      < (m_vertices[j].x - m_vertices[i].x) * (testy - m_vertices[i].y)
-		  / (m_vertices[j].y - m_vertices[i].y) + m_vertices[i].x))
+	      < (m_vertices[j].getX() - m_vertices[i].getX()) * (testy - m_vertices[i].getY())
+		  / (m_vertices[j].getY() - m_vertices[i].getY()) + m_vertices[i].getX()))
 	c = !c;
     }
   return static_cast<bool> (c);
@@ -120,22 +120,27 @@ catch (...)
   return false;
 }
 
-void Polygon::addPoint (const Point2f& rhs) try
+void Polygon::addPoint (const vertex2f& rhs) try
 {
   m_vertices.push_back (rhs);
 }
-catch (...)
+catch(...)
 {
-  //stub
+  //TODO: handle it!
+  throw;
 }
-void Polygon::addPoint (const Point2f&& rhs) try
+
+void Polygon::addPoint (const vertex2f&& rhs) try
 {
-  m_vertices.emplace_back (rhs);
+  m_vertices.emplace_back (std::move(rhs));
 }
-catch (...)
+catch(...)
 {
-  //stub
+  //TODO: handle it!
+  throw;
 }
+
+/*
 void Polygon::fromRect(const Rectf& rect)try
 {
   m_vertices.resize(4);
@@ -148,6 +153,7 @@ catch(...)
 {
   //stub
 }
+*/
 
 size_t Polygon::numPoints() const noexcept
 {
@@ -156,6 +162,6 @@ size_t Polygon::numPoints() const noexcept
 
 bool Polygon::operator == (const Polygon& other) const noexcept
 {
-  if( m_vertices.size() != other.numPoints()) return false;
+  if( this->numPoints() != other.numPoints()) return false;
   return std::equal(m_vertices.begin(), m_vertices.end(), other.m_vertices.begin());
 }
