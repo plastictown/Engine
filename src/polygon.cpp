@@ -9,11 +9,12 @@
 #include <algorithm>
 
 Polygon::Polygon ()
-  :m_vertices{}
+  : m_vertices {}
 {
 }
 Polygon::Polygon (const Polygon& rhs)try
-  :m_vertices{}
+:
+  m_vertices {}
 {
   if (this == &rhs)
     return;
@@ -24,8 +25,9 @@ catch (...)
   m_vertices.clear ();
   throw;
 }
-Polygon::Polygon (Polygon && rhs) try
-  :m_vertices{}
+Polygon::Polygon (Polygon&&  rhs) try
+:
+  m_vertices {}
 {
   m_vertices = std::move (rhs.m_vertices);
 }
@@ -46,7 +48,7 @@ catch (...)
   m_vertices.clear ();
   throw;
 }
-Polygon& Polygon::operator= (const Polygon&& rhs) try
+Polygon& Polygon::operator= (const Polygon && rhs) try
 {
   m_vertices = std::move (rhs.m_vertices);
   return *this;
@@ -82,13 +84,13 @@ bool Polygon::pointInPolygon (const vertex2f& p) const try
   float testy = p.getY();
   int i, j, c = 0;
   for (i = 0, j = nvert - 1; i < nvert; j = i++)
-    {
-      if (((m_vertices[i].getY() > testy) != (m_vertices[j].getY() > testy))
-	  && (testx
-	      < (m_vertices[j].getX() - m_vertices[i].getX()) * (testy - m_vertices[i].getY())
-		  / (m_vertices[j].getY() - m_vertices[i].getY()) + m_vertices[i].getX()))
-	c = !c;
-    }
+  {
+    if (((m_vertices[i].getY() > testy) != (m_vertices[j].getY() > testy))
+        && (testx
+            < (m_vertices[j].getX() - m_vertices[i].getX()) * (testy - m_vertices[i].getY())
+            / (m_vertices[j].getY() - m_vertices[i].getY()) + m_vertices[i].getX()))
+      c = !c;
+  }
   return static_cast<bool> (c);
 }
 catch (...)
@@ -105,13 +107,13 @@ bool Polygon::pointInPolygon (const vertex2f&& p) const try
   float testy = p.getY();
   int i, j, c = 0;
   for (i = 0, j = nvert - 1; i < nvert; j = i++)
-    {
-      if (((m_vertices[i].getY() > testy) != (m_vertices[j].getY() > testy))
-	  && (testx
-	      < (m_vertices[j].getX() - m_vertices[i].getX()) * (testy - m_vertices[i].getY())
-		  / (m_vertices[j].getY() - m_vertices[i].getY()) + m_vertices[i].getX()))
-	c = !c;
-    }
+  {
+    if (((m_vertices[i].getY() > testy) != (m_vertices[j].getY() > testy))
+        && (testx
+            < (m_vertices[j].getX() - m_vertices[i].getX()) * (testy - m_vertices[i].getY())
+            / (m_vertices[j].getY() - m_vertices[i].getY()) + m_vertices[i].getX()))
+      c = !c;
+  }
   return static_cast<bool> (c);
 }
 catch (...)

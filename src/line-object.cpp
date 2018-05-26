@@ -1,7 +1,7 @@
 #include <line-object.h>
 #include <render.h>
 
-LineObject::LineObject() : Drawable(), a{}, b{}, color{}
+LineObject::LineObject() : Drawable(), a {}, b {}, color {}
 {
   setType("line2f");
 }
@@ -34,7 +34,7 @@ LineObject& LineObject::operator=(const LineObject& rhs)
   color = rhs.color;
   return *this;
 }
-LineObject& LineObject::operator=(LineObject&& rhs)
+LineObject& LineObject::operator=(LineObject && rhs)
 {
   type = std::move(rhs.type);
   a = rhs.a;

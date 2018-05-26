@@ -7,17 +7,17 @@
 #include <vertex2f.h>
 
 vertex2f::vertex2f()
-  :vertex()
+  : vertex()
 {
 }
 
 vertex2f::vertex2f(const vertex2f& other)
-  :vertex(other)
+  : vertex(other)
 {
 }
 
 vertex2f::vertex2f( float x, float y)
-  : vertex({x,y})
+  : vertex({x, y})
 {
 }
 

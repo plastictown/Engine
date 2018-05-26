@@ -21,6 +21,7 @@
 #include <vertex2f.h>
 #include <vertex2fc.h>
 #include <color.h>
+#include <rect.h>
 
 using namespace std;
 

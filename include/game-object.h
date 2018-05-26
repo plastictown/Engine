@@ -9,7 +9,6 @@
 
 #include <point2f.h>
 #include <rectf.h>
-#include <affine.h>
 
 class Image;
 
@@ -31,10 +30,9 @@ class GameObject
 {
 public:
   GameObject()
-    : m_pos{},
-      m_type{GameObjectType::TypeUnknown},
-      m_visibility{false},
-      ct{}
+    : m_pos {},
+  m_type {GameObjectType::TypeUnknown},
+  m_visibility {false}
   {}
   /**
    * @brief Set new position of the scene
@@ -86,17 +84,12 @@ public:
     return m_visibility;
   }
   virtual ~GameObject() {}
-  Affine& CT()
-  {
-    return ct;
-  }
 protected:
   Point2f m_pos;
 private:
   GameObjectType m_type;
   /// Object visibility
   bool m_visibility;
-  Affine ct;
 };
 
 #endif // _GAME_OBJECT_H_INCLUDED_

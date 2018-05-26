@@ -34,7 +34,7 @@ void Animation::AddImage(const Image& img)
 
 void Animation::AddImage(const vector<Image>& v)
 {
-  for(auto& i : v)
+  for(auto & i : v)
   {
     AddImage(i);
   }

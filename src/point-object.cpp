@@ -8,7 +8,7 @@
 #include <utility>
 #include <render.h>
 
-PointObject::PointObject() : Drawable(), point{}, color{}
+PointObject::PointObject() : Drawable(), point {}, color {}
 {
   setType("point2f");
 }
@@ -45,7 +45,7 @@ PointObject& PointObject::operator=(const PointObject& rhs)
   return *this;
 }
 
-PointObject& PointObject::operator=(PointObject&& rhs)
+PointObject& PointObject::operator=(PointObject && rhs)
 {
   type = std::move(rhs.type);
   point = rhs.point;

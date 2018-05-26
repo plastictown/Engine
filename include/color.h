@@ -43,9 +43,9 @@ color<T, N>::color()
 {
   static_assert( N > 1, "too few coordinates! should be 2 or more");
   static_assert(std::is_arithmetic
-                <typename std::remove_cv
+                < typename std::remove_cv
                 < typename std::remove_reference
-                <T>::type>::type>::value,
+                <T>::type >::type >::value,
                 "values must have an arithmetic type!");
   colors.fill(0);
 }
@@ -85,7 +85,7 @@ void color<T, N> ::set(const std::initializer_list<T>& ilist)
   if(ilist.size() != N)
     throw std::invalid_argument("color::ctor(std::initializer_list) : invalid number of color parameters");
   size_t iter = 0;
-  for(auto& i : ilist)
+  for(auto & i : ilist)
     colors[iter++] = i;
 }
 

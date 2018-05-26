@@ -19,7 +19,7 @@ public:
   PointObject(const PointObject& rhs);              //
   PointObject(PointObject&& rhs);                   //
   PointObject& operator=(const PointObject& rhs);   //
-  PointObject& operator=(PointObject&& rhs);        //
+  PointObject& operator=(PointObject && rhs);       //
   bool operator==(const PointObject& rhs) const noexcept;
   const Point2f& getPoint() const noexcept;
   const Color4& getColor() const noexcept;

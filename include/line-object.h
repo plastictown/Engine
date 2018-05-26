@@ -13,7 +13,7 @@ public:
   LineObject(const LineObject& rhs);
   ~LineObject();
   LineObject& operator=(const LineObject& rhs);
-  LineObject& operator=(LineObject&& rhs);
+  LineObject& operator=(LineObject && rhs);
   bool operator==(const LineObject& rhs) const noexcept;
 
   const Point2f& getA() const noexcept;

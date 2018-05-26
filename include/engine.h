@@ -22,7 +22,7 @@ class Engine
   Engine(const Engine&) = delete;
   Engine& operator = (const Engine&) = delete;
   Engine(Engine&&) = delete;
-  Engine& operator = (Engine&&) = delete;
+  Engine& operator = (Engine && ) = delete;
 public:
   /** @brief Constructs new Engine object
    * @param [in] argc - argc parameter from main()

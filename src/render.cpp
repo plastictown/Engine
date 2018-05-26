@@ -150,7 +150,7 @@ void Render::init()
   glutMotionFunc(motion_func);
   glutEntryFunc(entry_func);
   glutKeyboardFunc(keyboard_func);
-  setClearColor(Color4{1.0f, 1.0f, 1.0f, 0.5f});
+  setClearColor(Color4 {1.0f, 1.0f, 1.0f, 0.5f});
 
   // auto f = std::function<void(const Drawable* )>(Render::drawPoint2);
   callbacks.insert(make_pair(string("point2f"), Render::drawPoint2));

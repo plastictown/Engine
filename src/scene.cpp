@@ -12,7 +12,7 @@
 
 using namespace std;
 
-Scene::Scene() : m_visibility{false} {}
+Scene::Scene() : m_visibility {false} {}
 
 uint32_t Scene::AddObject(std::shared_ptr<GameObject>& obj)
 {
@@ -124,7 +124,7 @@ bool Scene::FromFile(const std::string& filename) try
   auto& description = m_loader.getDescription();
   this->setVisible(description.visibility);
 
-  for (auto& img : images)
+  for (auto & img : images)
   {
     std::shared_ptr<GameObject> im = make_shared<Image>();
     im->setVisible(img.visibility);
@@ -135,12 +135,12 @@ bool Scene::FromFile(const std::string& filename) try
     this->AddObject(im);
   }  // for all images
 
-  for (auto& ani : animations)
+  for (auto & ani : animations)
   {
     std::shared_ptr<GameObject> a = make_shared<Animation>(ani.interval);
     a->setVisible(ani.visibility);
     auto pa = std::static_pointer_cast<Animation>(a);
-    for (auto& f : ani.files)
+    for (auto & f : ani.files)
     {
       Image im;
       if (!im.load(f))
