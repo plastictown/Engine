@@ -18,7 +18,7 @@ class Polygon
 public:
   Polygon();
   Polygon(const Polygon&);
-  Polygon(Polygon &&);
+  Polygon(Polygon&&);
   Polygon& operator=(const Polygon&);
   Polygon& operator=(const Polygon&&);
   bool operator ==(const Polygon&) const noexcept;

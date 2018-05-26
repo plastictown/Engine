@@ -27,11 +27,20 @@ public:
     * special implementation.
     * @see Render
     */
-  void setType(const std::string& type_){type = type_; }
-  void setType(std::string&& type_){type = std::move(type_); }
-  const std::string& getType() const { return type; }
+  void setType(const std::string& type_)
+  {
+    type = type_;
+  }
+  void setType(std::string&& type_)
+  {
+    type = std::move(type_);
+  }
+  const std::string& getType() const
+  {
+    return type;
+  }
   virtual void draw() = 0;
-  virtual ~Drawable(){}
+  virtual ~Drawable() {}
 };
 
 #endif // DRAWABLE_H_INCLUDED

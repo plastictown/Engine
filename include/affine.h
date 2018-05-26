@@ -15,11 +15,11 @@ class Affine
 {
 public:
   Affine()
-  : m_scale{},
-    m_rotation_angle{0.0f},
-    m_rotation_point{},
-    m_translation{}
-    {};
+    : m_scale{},
+      m_rotation_angle{0.0f},
+      m_rotation_point{},
+      m_translation{}
+  {};
   void apply()
   {
     glMatrixMode(GL_MODELVIEW);

@@ -56,13 +56,13 @@ catch (...)
   m_vertices.clear ();
   throw;
 }
-Polygon::~Polygon () noexcept try
+Polygon::~Polygon () try
 {
   m_vertices.clear ();
 }
 catch (...)
 {
-  // handle it!
+  //stub
 }
 bool Polygon::empty () const noexcept
 {

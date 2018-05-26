@@ -5,8 +5,9 @@
 #include <drawable.h>
 #include <point2f.h>
 
-class LineObject : public Drawable {
- public:
+class LineObject : public Drawable
+{
+public:
   LineObject();
   LineObject(const Point2f& p1, const Point2f& p2, const Color4& color);
   LineObject(const LineObject& rhs);
@@ -26,7 +27,7 @@ class LineObject : public Drawable {
 
   void draw();
 
- private:
+private:
   Point2f a;
   Point2f b;
   Color4 color;

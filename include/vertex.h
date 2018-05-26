@@ -54,26 +54,29 @@ vertex<T, N>::vertex() {
 
 template <typename T, size_t N>
 vertex<T, N>::vertex(const std::initializer_list<T>& il)
-    : vertex<T, N>() {
-    if(il.size() != N)
-        throw std::invalid_argument("vertex::ctor(): incorrect number of vertex coordinates");
-    size_t ctr = 0u;
-    for(auto& i : il)
-        coords[ctr++] = i;
+  : vertex<T, N>()
+{
+  if(il.size() != N)
+    throw std::invalid_argument("vertex::ctor(): incorrect number of vertex coordinates");
+  size_t ctr = 0u;
+  for(auto& i : il)
+    coords[ctr++] = i;
 }
 
 template <typename T, size_t N>
-void vertex<T, N>::setAt(size_t vnum, const T& val) {
-    if(vnum >= N)
-        throw std::out_of_range("vertex::setAt(): invalid index");
-    coords[vnum] = val;
+void vertex<T, N>::setAt(size_t vnum, const T& val)
+{
+  if(vnum >= N)
+    throw std::out_of_range("vertex::setAt(): invalid index");
+  coords[vnum] = val;
 }
 
 template <typename T, size_t N>
-const T& vertex<T, N>::getAt(size_t vnum) const {
-    if(vnum >= N)
-        throw std::out_of_range("vertex::getAt(): invalid index");
-    return coords[vnum];
+const T& vertex<T, N>::getAt(size_t vnum) const
+{
+  if(vnum >= N)
+    throw std::out_of_range("vertex::getAt(): invalid index");
+  return coords[vnum];
 }
 
 template <typename T, size_t N>

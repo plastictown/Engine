@@ -34,7 +34,7 @@ private:
 };
 
 template <typename T>
-Incrementer<T>::Incrementer():val {0}
+Incrementer<T>::Incrementer(): val {0}
 {
   static_assert(std::is_integral<T>::value, "unsigned integral type required.");
   static_assert(std::is_unsigned<T>::value, "unsigned integral type required.");

@@ -11,8 +11,9 @@
 #include <point2f.h>
 #include <color4.h>
 
-class PointObject : public Drawable {
- public:
+class PointObject : public Drawable
+{
+public:
   PointObject();                                    //
   PointObject(const Point2f& pt, const Color4& c);  //
   PointObject(const PointObject& rhs);              //
@@ -26,7 +27,7 @@ class PointObject : public Drawable {
   void setColor(const Color4& c) noexcept;
   void draw();     //
   ~PointObject();  //
- private:
+private:
   Point2f point;
   Color4 color;
 };

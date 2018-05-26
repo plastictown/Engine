@@ -19,6 +19,7 @@
 #include <polygon.h>
 #include <vertex.h>
 #include <vertex2f.h>
+#include <vertex2fc.h>
 #include <color.h>
 
 using namespace std;

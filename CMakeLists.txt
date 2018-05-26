@@ -15,7 +15,8 @@ add_executable(engine main.cpp
 					  src/polygon.cpp
                                           src/point-object.cpp
                                           src/line-object.cpp
-					  src/vertex2f.cpp
+					  src/vertex2fc.cpp
+                                          src/vertex2f.cpp
                                           )
 
 install(TARGETS engine RUNTIME DESTINATION bin)
