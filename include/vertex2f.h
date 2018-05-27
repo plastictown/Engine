@@ -70,6 +70,8 @@ public:
    * @return pointer to data array
    */
   const float* data() const noexcept;
+
+  ~vertex2f() = default;
 };
 
 #endif // __VERTEX2F_H_INCLUDED__

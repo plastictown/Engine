@@ -38,6 +38,8 @@ public:
   bool operator==(const vertex<T, N>& rhs) const noexcept;
   /// operator []
   T& operator [] (size_t idx);
+  /// dtor
+  virtual ~vertex<T, N>() noexcept;
 protected:
   std::array<T, N> coords;
 };
@@ -112,5 +114,10 @@ T& vertex<T, N>::operator [] (size_t idx)
   if(idx >= N)
     throw std::out_of_range("vertex::operator[]: invalid index");
   return coords[idx];
+}
+
+template <typename T, size_t N>
+vertex<T, N>::~vertex() noexcept
+{
 }
 #endif // __VERTEX_H_INCLUDED__
