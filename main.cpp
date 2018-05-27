@@ -30,8 +30,17 @@ int main(int argc, char** argv) try {
 
     vertex2f v{1,5};
     vertex2f vv(2,3);
+    polygon<float, 2> p{};
 
-    cout << v.data()[1] << endl;
+    p.addVertex(vertex2f{0,0});
+    p.addVertex(vertex2f{0,10});
+    p.addVertex(vertex2f{10,10});
+    p.addVertex(vertex2f{10,0});
+
+    std::cout << p.pointInPolygon(vertex2f{-1,-1}) << endl;
+    std::cout << p.pointInPolygon(vertex2f{1,1}) << endl;
+
+    std::cout << "size = " << p.size() << std::endl;
 
 //-------------------------------------------------------------//
     std::shared_ptr<Scene> scn = std::make_shared<Scene>();

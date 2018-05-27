@@ -12,7 +12,6 @@ add_executable(engine main.cpp
 					  src/animation.cpp 
 					  src/engine.cpp 
 					  src/SceneLoader.cpp
-					  src/polygon.cpp
                                           src/point-object.cpp
                                           src/line-object.cpp
 					  src/vertex2fc.cpp

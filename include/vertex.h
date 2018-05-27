@@ -37,7 +37,7 @@ public:
   /// operator ==
   bool operator==(const vertex<T, N>& rhs) const noexcept;
   /// operator []
-  T& operator [] (size_t idx) const;
+  T& operator [] (size_t idx);
 protected:
   std::array<T, N> coords;
 };
@@ -107,7 +107,7 @@ vertex<T, N>::vertex(const vertex<T, N>& other)
 }
 
 template <typename T, size_t N>
-T& vertex<T, N>::operator [] (size_t idx) const
+T& vertex<T, N>::operator [] (size_t idx)
 {
   if(idx >= N)
     throw std::out_of_range("vertex::operator[]: invalid index");
