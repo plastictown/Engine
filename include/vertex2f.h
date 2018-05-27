@@ -64,7 +64,7 @@ public:
    * @return true if the objects are euqal,
    * false otherwise
    */
-  bool operator ==(const vertex2f& rhs);
+  bool operator ==(const vertex2f& rhs) const noexcept;
   /**
    * @brief get pointer to data array
    * @return pointer to data array

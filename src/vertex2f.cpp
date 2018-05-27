@@ -7,17 +7,17 @@
 #include <vertex2f.h>
 
 vertex2f::vertex2f()
-  :vertex()
+  : vertex()
 {
 }
 
 vertex2f::vertex2f(const vertex2f& other)
-  :vertex(other)
+  : vertex(other)
 {
 }
 
 vertex2f::vertex2f( float x, float y)
-  : vertex({x,y})
+  : vertex({x, y})
 {
 }
 
@@ -45,11 +45,11 @@ vertex2f& vertex2f::operator=(const vertex2f& rhs)
 {
   if(this == &rhs)
     return *this;
-  *this = rhs;
+  this->coords = rhs.coords;
   return *this;
 }
 
-bool vertex2f::operator ==(const vertex2f& rhs)
+bool vertex2f::operator ==(const vertex2f& rhs) const noexcept
 {
   if(this == &rhs)
     return true;

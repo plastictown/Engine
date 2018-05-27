@@ -22,7 +22,7 @@ class Engine
   Engine(const Engine&) = delete;
   Engine& operator = (const Engine&) = delete;
   Engine(Engine&&) = delete;
-  Engine& operator = (Engine&&) = delete;
+  Engine& operator = (Engine && ) = delete;
 public:
   /** @brief Constructs new Engine object
    * @param [in] argc - argc parameter from main()
@@ -45,17 +45,17 @@ public:
    * @see SceneLoader
    */
   static Image LoadImage(const string& filename);
-/** @brief Add new GameObject into current
- * scene.
- * @param [in] obj - pointer to any GameObject such as
- * Image or Animation.
- * @return new scene object id.
- * @see Scene
- * @see Image
- * @see Animation
- * @see GameObject
- * @see RemoveObject
- */
+  /** @brief Add new GameObject into current
+   * scene.
+   * @param [in] obj - pointer to any GameObject such as
+   * Image or Animation.
+   * @return new scene object id.
+   * @see Scene
+   * @see Image
+   * @see Animation
+   * @see GameObject
+   * @see RemoveObject
+   */
   uint32_t AddObject(shared_ptr<GameObject>&& obj);
   /** @brief Remove object from current scene
    * @param [in] key - id of object to be removed

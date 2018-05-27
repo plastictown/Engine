@@ -11,6 +11,7 @@ doxygen
 *.a
 *.so
 CMakeCache.txt
+CMakeLists.txt.*
 cmake_install.cmake
 CMakeFiles
 Makefile

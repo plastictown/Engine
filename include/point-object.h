@@ -11,14 +11,15 @@
 #include <point2f.h>
 #include <color4.h>
 
-class PointObject : public Drawable {
- public:
+class PointObject : public Drawable
+{
+public:
   PointObject();                                    //
   PointObject(const Point2f& pt, const Color4& c);  //
   PointObject(const PointObject& rhs);              //
   PointObject(PointObject&& rhs);                   //
   PointObject& operator=(const PointObject& rhs);   //
-  PointObject& operator=(PointObject&& rhs);        //
+  PointObject& operator=(PointObject && rhs);       //
   bool operator==(const PointObject& rhs) const noexcept;
   const Point2f& getPoint() const noexcept;
   const Color4& getColor() const noexcept;
@@ -26,7 +27,7 @@ class PointObject : public Drawable {
   void setColor(const Color4& c) noexcept;
   void draw();     //
   ~PointObject();  //
- private:
+private:
   Point2f point;
   Color4 color;
 };
