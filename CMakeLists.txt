@@ -16,6 +16,7 @@ add_executable(engine main.cpp
                                           src/line-object.cpp
 					  src/vertex2fc.cpp
                                           src/vertex2f.cpp
+					  src/rect2f.cpp
                                           )
 
 install(TARGETS engine RUNTIME DESTINATION bin)

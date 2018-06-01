@@ -21,27 +21,15 @@
 #include <vertex2f.h>
 #include <vertex2fc.h>
 #include <color.h>
-#include <rect.h>
+#include <rect2f.h>
 
 using namespace std;
 
 int main(int argc, char** argv) try {
     Engine e(argc, argv);
-
-    vertex2f v{1,5};
-    vertex2f vv(2,3);
-    polygon<float, 2> p{};
-
-    p.addVertex(vertex2f{0,0});
-    p.addVertex(vertex2f{0,10});
-    p.addVertex(vertex2f{10,10});
-    p.addVertex(vertex2f{10,0});
-
-    std::cout << p.pointInPolygon(vertex2f{-1,-1}) << endl;
-    std::cout << p.pointInPolygon(vertex2f{1,1}) << endl;
-
-    std::cout << "size = " << p.size() << std::endl;
-
+  vertex2f v{100,100};
+  rect2f r{v,v,vertex2f{22,33},v};
+  std::cout << r[2].getY() << std::endl;
 //-------------------------------------------------------------//
     std::shared_ptr<Scene> scn = std::make_shared<Scene>();
     scn->setVisible(true);

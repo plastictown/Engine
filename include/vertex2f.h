@@ -71,7 +71,12 @@ public:
    */
   const float* data() const noexcept;
 
+  operator vertex<float,2>() const;
+
   ~vertex2f() = default;
+protected:
+  float& operator [] (size_t idx);
+  const float& operator [] (size_t idx) const;
 };
 
 #endif // __VERTEX2F_H_INCLUDED__

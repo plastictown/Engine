@@ -60,3 +60,19 @@ const float* vertex2f::data() const noexcept
 {
   return this->coords.data();
 }
+
+vertex2f::operator vertex<float,2>() const
+{
+  return static_cast<vertex<float,2>>(*this);
+}
+
+float& vertex2f::operator [] (size_t idx)
+{
+  return vertex<float, 2>::operator[](idx);
+}
+
+const float& vertex2f::operator [] (size_t idx) const
+{
+  return vertex<float, 2>::operator[](idx);
+}
+
